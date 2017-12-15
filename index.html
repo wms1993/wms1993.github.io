@@ -1156,6 +1156,170 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/12/15/Markdown语法详解/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="wms1993">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="王梦思的个人博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/12/15/Markdown语法详解/" itemprop="url">Markdown语法详解</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posté le</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-12-15T19:10:44+08:00">
+                2017-12-15
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="Markdown语法详解"><a href="#Markdown语法详解" class="headerlink" title="Markdown语法详解"></a>Markdown语法详解</h1><blockquote>
+<p>为什么用Markdown? Markdown 是一种轻量级的「标记语言」，它的优点很多，目前也被越来越多的写作爱好者，撰稿者广泛使用。看到这里请不要被「标记」、「语言」所迷惑，Markdown 的语法十分简单。常用的标记符号也不超过十个，这种相对于更为复杂的 HTML 标记语言来说，Markdown 可谓是十分轻量的，学习成本也不需要太多，且一旦熟悉这种语法规则，会有一劳永逸的效果。</p>
+</blockquote>
+<p>第一次接触Markdown有段时间了，但是真正去学习Markdown没多久，自从开始写博客，就一直采用Markdown来编辑，相比于传统的编辑器，不得不说Markdown真的是太好用了，让我爱不释手。现在很多博客网站都已经支持了Markdown编辑模式，比如CSDN，简书等，可以肯定，将来Markdown将会更加流行，不对，应该是现在就很流行。</p>
+<h3 id="（一）Markdown的优点"><a href="#（一）Markdown的优点" class="headerlink" title="（一）Markdown的优点:"></a>（一）<strong>Markdown</strong>的优点:</h3><p>&gt;</p>
+<ol>
+<li>专注你的文字内容而不是排版样式，安心写作。</li>
+<li>轻松的导出 HTML、PDF 和本身的 .md 文件。</li>
+<li>纯文本内容，兼容所有的文本编辑器与字处理软件。</li>
+<li>随时修改你的文章版本，不必像字处理软件生成若干文件版本导致混乱。</li>
+<li>可读、直观、学习成本低。</li>
+</ol>
+<h3 id="（二）兼容-HTML"><a href="#（二）兼容-HTML" class="headerlink" title="（二）兼容 HTML"></a>（二）兼容 HTML</h3><blockquote>
+<p>Markdown 语法的目标是：成为一种适用于网络的书写语言。<br>Markdown 不是想要取代 HTML，甚至也没有要和它相近，它的语法种类很少，只对应 HTML 标记的一小部分。Markdown 的构想不是要使得 HTML 文档更容易书写。HTML 已经很容易写了。Markdown 的理念是，能让文档更容易读、写和随意改。HTML 是一种发布的格式，Markdown 是一种书写的格式。就这样，Markdown 的格式语法只涵盖纯文本可以涵盖的范围。<br>不在 Markdown 涵盖范围之内的标签，都可以直接在文档里面用 HTML 撰写。不需要额外标注这是 HTML 或是 Markdown；只要直接加标签就可以了。<br>要制约的只有一些 HTML 区块元素――比如 \<div\>、\<table\>、\<pre\>、\<p\> 等标签，必须在前后加上空行与其它内容区隔开，还要求它们的开始标签与结尾标签不能用制表符或空格来缩进。Markdown 的生成器有足够智能，不会在 HTML 区块标签外加上不必要的 <p> 标签。</p>
+</p\></pre\></table\></div\></p></blockquote>
+<p>例子如下，在 Markdown 文件里加上一段 HTML 表格：<br> <img src="http://img.blog.csdn.net/20170606152629944?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvd21zMTk5MzExMjc1MzE5/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt=""></p>
+<blockquote>
+<p>请注意，在 HTML 区块标签间的 Markdown 格式语法将不会被处理。比如，你在 HTML 区块内使用 Markdown 样式的<em>强调</em>会没有效果。</p>
+<p>HTML 的区段（行内）标签如 \<span\>、\<cite\>、\<del\> 可以在 Markdown 的段落、列表或是标题里随意使用。依照个人习惯，甚至可以不用 Markdown 格式，而直接采用 HTML 标签来格式化。举例说明：如果比较喜欢 HTML 的 \<a\> 或 \<img\> 标签，可以直接使用这些标签，而不用 Markdown 提供的链接或是图像标签语法。<br>和处在 HTML 区块标签间不同，Markdown 语法在 HTML 区段标签间是有效的。 </img\></a\></del\></cite\></span\></p>
+</blockquote>
+<p>###（三）<strong>Markdown</strong>的语法: </p>
+<h4 id="标题"><a href="#标题" class="headerlink" title="标题"></a>标题</h4><p><img src="http://img.blog.csdn.net/20170606145050270?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvd21zMTk5MzExMjc1MzE5/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt="这里写图片描述"></p>
+<p>标题语法是经常会用到的，和html里面的h1,h2这些标签一样的作用，在Markdown中只用在文字前面加上#号就代表标题，需要几级标题就几个#号，但是最多只支持六级标题，注意#号后面有个空格。</p>
+<h4 id="列表"><a href="#列表" class="headerlink" title="列表"></a>列表</h4><p>在Html中有无序列表和有序列表的标签，但是相比于Markdown还是复杂很多，在Markdown中使用列表很简单。有序列表就在文本前面加上1. 2. 3.，无序列表在文本前面加上# (-也是可以的)，无序和有序列表和文本之间都有一个空格。</p>
+<p><img src="http://img.blog.csdn.net/20170606145628114?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvd21zMTk5MzExMjc1MzE5/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt="这里写图片描述"></p>
+<h4 id="引用"><a href="#引用" class="headerlink" title="引用"></a>引用</h4><p>有时候我们在文章中要引用一句别人说的话，这个时候就需要用到引用了，这时候只用在你需要引用的文本前面加上 <code>&gt;</code> 大于号就可以了<br><img src="http://img.blog.csdn.net/20170606150117278?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvd21zMTk5MzExMjc1MzE5/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt="这里写图片描述"></p>
+<h4 id="图片与链接"><a href="#图片与链接" class="headerlink" title="图片与链接"></a>图片与链接</h4><ol>
+<li>图片：<code>![](url)</code> </li>
+<li>链接：<code>[](url)</code> <a href="http://blog.csdn.net/wms199311275319/" target="_blank" rel="noopener">博客地址</a></li>
+</ol>
+<blockquote>
+<p>注意：图片和链接的区别在于有没有一个！号</p>
+</blockquote>
+<h4 id="粗体与斜体"><a href="#粗体与斜体" class="headerlink" title="粗体与斜体"></a>粗体与斜体</h4><p>Markdown 的粗体和斜体也非常简单，用两个 <em> 包含一段文本就是粗体的语法，用一个 </em> 包含一段文本就是斜体的语法。<br><img src="http://img.blog.csdn.net/20170606151133932?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvd21zMTk5MzExMjc1MzE5/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt="这里写图片描述"></p>
+<h4 id="代码块"><a href="#代码块" class="headerlink" title="代码块"></a>代码块</h4><p>代码块是程序员写博客必备的，用起来也很简单，就是用三个``符号包含代码块，也就是键盘esc键下方的那个按键</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">public class Demo &#123;</span><br><span class="line">	public static void main (String[] args) &#123;</span><br><span class="line">		System.out.println (&quot;hello,world&quot;);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="分割线"><a href="#分割线" class="headerlink" title="分割线"></a>分割线</h4><p>3个*号就可以表示一条分割线或者3个-也可以</p>
+<hr>
+<h2 id="这里是分割线的内容"><a href="#这里是分割线的内容" class="headerlink" title="这里是分割线的内容"></a>这里是分割线的内容</h2><h4 id="换行"><a href="#换行" class="headerlink" title="换行"></a>换行</h4><ol>
+<li>段落的前后必须是空行：空行指的是行内什么都没有，或者只有空白符（空格或制表符）<br>相邻两行文本，如果中间没有空行 会显示在一行中（换行符被转换为空格）</li>
+<li>如果需要在段落内加入换行<code>&lt;br/&gt;</code>：</li>
+<li>可以在前一行的末尾加入至少两个空格然后换行写其它的文字</li>
+<li>Markdown 中的多数区块都需要在两个空行之间。</li>
+</ol>
+<p>以上是用的比较多的Markdown语法，熟练掌握以上的语法，可以应付绝大多是场景，这里就简单的介绍下，以后有机会再尝试学习更高级的语法。</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/12/15/什么是操作符？/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1586,7 +1750,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">8</span>
+                  <span class="site-state-item-count">9</span>
                   <span class="site-state-item-name">articles</span>
                 </a>
               </div>

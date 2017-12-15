@@ -1,0 +1,710 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.3" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.3">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.3" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="Markdown语法详解 为什么用Markdown? Markdown 是一种轻量级的「标记语言」，它的优点很多，目前也被越来越多的写作爱好者，撰稿者广泛使用。看到这里请不要被「标记」、「语言」所迷惑，Markdown 的语法十分简单。常用的标记符号也不超过十个，这种相对于更为复杂的 HTML 标记语言来说，Markdown 可谓是十分轻量的，学习成本也不需要太多，且一旦熟悉这种语法规则，会有一劳">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Markdown语法详解">
+<meta property="og:url" content="http://yoursite.com/2017/12/15/Markdown语法详解/index.html">
+<meta property="og:site_name" content="王梦思的个人博客">
+<meta property="og:description" content="Markdown语法详解 为什么用Markdown? Markdown 是一种轻量级的「标记语言」，它的优点很多，目前也被越来越多的写作爱好者，撰稿者广泛使用。看到这里请不要被「标记」、「语言」所迷惑，Markdown 的语法十分简单。常用的标记符号也不超过十个，这种相对于更为复杂的 HTML 标记语言来说，Markdown 可谓是十分轻量的，学习成本也不需要太多，且一旦熟悉这种语法规则，会有一劳">
+<meta property="og:image" content="http://img.blog.csdn.net/20170606152629944?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvd21zMTk5MzExMjc1MzE5/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast">
+<meta property="og:image" content="http://img.blog.csdn.net/20170606145050270?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvd21zMTk5MzExMjc1MzE5/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast">
+<meta property="og:image" content="http://img.blog.csdn.net/20170606145628114?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvd21zMTk5MzExMjc1MzE5/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast">
+<meta property="og:image" content="http://img.blog.csdn.net/20170606150117278?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvd21zMTk5MzExMjc1MzE5/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast">
+<meta property="og:image" content="http://img.blog.csdn.net/20170606151133932?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvd21zMTk5MzExMjc1MzE5/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast">
+<meta property="og:updated_time" content="2017-12-15T11:19:14.320Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Markdown语法详解">
+<meta name="twitter:description" content="Markdown语法详解 为什么用Markdown? Markdown 是一种轻量级的「标记语言」，它的优点很多，目前也被越来越多的写作爱好者，撰稿者广泛使用。看到这里请不要被「标记」、「语言」所迷惑，Markdown 的语法十分简单。常用的标记符号也不超过十个，这种相对于更为复杂的 HTML 标记语言来说，Markdown 可谓是十分轻量的，学习成本也不需要太多，且一旦熟悉这种语法规则，会有一劳">
+<meta name="twitter:image" content="http://img.blog.csdn.net/20170606152629944?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvd21zMTk5MzExMjc1MzE5/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '5.1.3',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2017/12/15/Markdown语法详解/"/>
+
+
+
+
+
+  <title>Markdown语法详解 | 王梦思的个人博客</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">王梦思的个人博客</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Accueil
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archives
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/12/15/Markdown语法详解/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="wms1993">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="王梦思的个人博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Markdown语法详解</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posté le</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-12-15T19:10:44+08:00">
+                2017-12-15
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="Markdown语法详解"><a href="#Markdown语法详解" class="headerlink" title="Markdown语法详解"></a>Markdown语法详解</h1><blockquote>
+<p>为什么用Markdown? Markdown 是一种轻量级的「标记语言」，它的优点很多，目前也被越来越多的写作爱好者，撰稿者广泛使用。看到这里请不要被「标记」、「语言」所迷惑，Markdown 的语法十分简单。常用的标记符号也不超过十个，这种相对于更为复杂的 HTML 标记语言来说，Markdown 可谓是十分轻量的，学习成本也不需要太多，且一旦熟悉这种语法规则，会有一劳永逸的效果。</p>
+</blockquote>
+<p>第一次接触Markdown有段时间了，但是真正去学习Markdown没多久，自从开始写博客，就一直采用Markdown来编辑，相比于传统的编辑器，不得不说Markdown真的是太好用了，让我爱不释手。现在很多博客网站都已经支持了Markdown编辑模式，比如CSDN，简书等，可以肯定，将来Markdown将会更加流行，不对，应该是现在就很流行。</p>
+<h3 id="（一）Markdown的优点"><a href="#（一）Markdown的优点" class="headerlink" title="（一）Markdown的优点:"></a>（一）<strong>Markdown</strong>的优点:</h3><p>&gt;</p>
+<ol>
+<li>专注你的文字内容而不是排版样式，安心写作。</li>
+<li>轻松的导出 HTML、PDF 和本身的 .md 文件。</li>
+<li>纯文本内容，兼容所有的文本编辑器与字处理软件。</li>
+<li>随时修改你的文章版本，不必像字处理软件生成若干文件版本导致混乱。</li>
+<li>可读、直观、学习成本低。</li>
+</ol>
+<h3 id="（二）兼容-HTML"><a href="#（二）兼容-HTML" class="headerlink" title="（二）兼容 HTML"></a>（二）兼容 HTML</h3><blockquote>
+<p>Markdown 语法的目标是：成为一种适用于网络的书写语言。<br>Markdown 不是想要取代 HTML，甚至也没有要和它相近，它的语法种类很少，只对应 HTML 标记的一小部分。Markdown 的构想不是要使得 HTML 文档更容易书写。HTML 已经很容易写了。Markdown 的理念是，能让文档更容易读、写和随意改。HTML 是一种发布的格式，Markdown 是一种书写的格式。就这样，Markdown 的格式语法只涵盖纯文本可以涵盖的范围。<br>不在 Markdown 涵盖范围之内的标签，都可以直接在文档里面用 HTML 撰写。不需要额外标注这是 HTML 或是 Markdown；只要直接加标签就可以了。<br>要制约的只有一些 HTML 区块元素――比如 \<div\>、\<table\>、\<pre\>、\<p\> 等标签，必须在前后加上空行与其它内容区隔开，还要求它们的开始标签与结尾标签不能用制表符或空格来缩进。Markdown 的生成器有足够智能，不会在 HTML 区块标签外加上不必要的 <p> 标签。</p>
+</p\></pre\></table\></div\></p></blockquote>
+<p>例子如下，在 Markdown 文件里加上一段 HTML 表格：<br> <img src="http://img.blog.csdn.net/20170606152629944?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvd21zMTk5MzExMjc1MzE5/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt=""></p>
+<blockquote>
+<p>请注意，在 HTML 区块标签间的 Markdown 格式语法将不会被处理。比如，你在 HTML 区块内使用 Markdown 样式的<em>强调</em>会没有效果。</p>
+<p>HTML 的区段（行内）标签如 \<span\>、\<cite\>、\<del\> 可以在 Markdown 的段落、列表或是标题里随意使用。依照个人习惯，甚至可以不用 Markdown 格式，而直接采用 HTML 标签来格式化。举例说明：如果比较喜欢 HTML 的 \<a\> 或 \<img\> 标签，可以直接使用这些标签，而不用 Markdown 提供的链接或是图像标签语法。<br>和处在 HTML 区块标签间不同，Markdown 语法在 HTML 区段标签间是有效的。 </img\></a\></del\></cite\></span\></p>
+</blockquote>
+<p>###（三）<strong>Markdown</strong>的语法: </p>
+<h4 id="标题"><a href="#标题" class="headerlink" title="标题"></a>标题</h4><p><img src="http://img.blog.csdn.net/20170606145050270?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvd21zMTk5MzExMjc1MzE5/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt="这里写图片描述"></p>
+<p>标题语法是经常会用到的，和html里面的h1,h2这些标签一样的作用，在Markdown中只用在文字前面加上#号就代表标题，需要几级标题就几个#号，但是最多只支持六级标题，注意#号后面有个空格。</p>
+<h4 id="列表"><a href="#列表" class="headerlink" title="列表"></a>列表</h4><p>在Html中有无序列表和有序列表的标签，但是相比于Markdown还是复杂很多，在Markdown中使用列表很简单。有序列表就在文本前面加上1. 2. 3.，无序列表在文本前面加上# (-也是可以的)，无序和有序列表和文本之间都有一个空格。</p>
+<p><img src="http://img.blog.csdn.net/20170606145628114?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvd21zMTk5MzExMjc1MzE5/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt="这里写图片描述"></p>
+<h4 id="引用"><a href="#引用" class="headerlink" title="引用"></a>引用</h4><p>有时候我们在文章中要引用一句别人说的话，这个时候就需要用到引用了，这时候只用在你需要引用的文本前面加上 <code>&gt;</code> 大于号就可以了<br><img src="http://img.blog.csdn.net/20170606150117278?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvd21zMTk5MzExMjc1MzE5/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt="这里写图片描述"></p>
+<h4 id="图片与链接"><a href="#图片与链接" class="headerlink" title="图片与链接"></a>图片与链接</h4><ol>
+<li>图片：<code>![](url)</code> </li>
+<li>链接：<code>[](url)</code> <a href="http://blog.csdn.net/wms199311275319/" target="_blank" rel="noopener">博客地址</a></li>
+</ol>
+<blockquote>
+<p>注意：图片和链接的区别在于有没有一个！号</p>
+</blockquote>
+<h4 id="粗体与斜体"><a href="#粗体与斜体" class="headerlink" title="粗体与斜体"></a>粗体与斜体</h4><p>Markdown 的粗体和斜体也非常简单，用两个 <em> 包含一段文本就是粗体的语法，用一个 </em> 包含一段文本就是斜体的语法。<br><img src="http://img.blog.csdn.net/20170606151133932?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvd21zMTk5MzExMjc1MzE5/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt="这里写图片描述"></p>
+<h4 id="代码块"><a href="#代码块" class="headerlink" title="代码块"></a>代码块</h4><p>代码块是程序员写博客必备的，用起来也很简单，就是用三个``符号包含代码块，也就是键盘esc键下方的那个按键</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">public class Demo &#123;</span><br><span class="line">	public static void main (String[] args) &#123;</span><br><span class="line">		System.out.println (&quot;hello,world&quot;);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="分割线"><a href="#分割线" class="headerlink" title="分割线"></a>分割线</h4><p>3个*号就可以表示一条分割线或者3个-也可以</p>
+<hr>
+<h2 id="这里是分割线的内容"><a href="#这里是分割线的内容" class="headerlink" title="这里是分割线的内容"></a>这里是分割线的内容</h2><h4 id="换行"><a href="#换行" class="headerlink" title="换行"></a>换行</h4><ol>
+<li>段落的前后必须是空行：空行指的是行内什么都没有，或者只有空白符（空格或制表符）<br>相邻两行文本，如果中间没有空行 会显示在一行中（换行符被转换为空格）</li>
+<li>如果需要在段落内加入换行<code>&lt;br/&gt;</code>：</li>
+<li>可以在前一行的末尾加入至少两个空格然后换行写其它的文字</li>
+<li>Markdown 中的多数区块都需要在两个空行之间。</li>
+</ol>
+<p>以上是用的比较多的Markdown语法，熟练掌握以上的语法，可以应付绝大多是场景，这里就简单的介绍下，以后有机会再尝试学习更高级的语法。</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/12/15/什么是操作符？/" rel="next" title="">
+                <i class="fa fa-chevron-left"></i> 
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/12/15/Android中蓝牙开发-1/" rel="prev" title="Android中蓝牙开发">
+                Android中蓝牙开发 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table Des Matières
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Ensemble
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">wms1993</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">9</span>
+                  <span class="site-state-item-name">articles</span>
+                </a>
+              </div>
+            
+
+            
+
+            
+
+          </nav>
+
+          
+
+          <div class="links-of-author motion-element">
+            
+          </div>
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Markdown语法详解"><span class="nav-number">1.</span> <span class="nav-text"><a href="#Markdown&#x8BED;&#x6CD5;&#x8BE6;&#x89E3;" class="headerlink" title="Markdown&#x8BED;&#x6CD5;&#x8BE6;&#x89E3;"></a>Markdown&#x8BED;&#x6CD5;&#x8BE6;&#x89E3;</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#（一）Markdown的优点"><span class="nav-number">1.0.1.</span> <span class="nav-text"><a href="#&#xFF08;&#x4E00;&#xFF09;Markdown&#x7684;&#x4F18;&#x70B9;" class="headerlink" title="&#xFF08;&#x4E00;&#xFF09;Markdown&#x7684;&#x4F18;&#x70B9;:"></a>&#xFF08;&#x4E00;&#xFF09;<strong>Markdown</strong>&#x7684;&#x4F18;&#x70B9;:</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#（二）兼容-HTML"><span class="nav-number">1.0.2.</span> <span class="nav-text"><a href="#&#xFF08;&#x4E8C;&#xFF09;&#x517C;&#x5BB9;-HTML" class="headerlink" title="&#xFF08;&#x4E8C;&#xFF09;&#x517C;&#x5BB9; HTML"></a>&#xFF08;&#x4E8C;&#xFF09;&#x517C;&#x5BB9; HTML</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#标题"><span class="nav-number">1.0.2.1.</span> <span class="nav-text"><a href="#&#x6807;&#x9898;" class="headerlink" title="&#x6807;&#x9898;"></a>&#x6807;&#x9898;</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#列表"><span class="nav-number">1.0.2.2.</span> <span class="nav-text"><a href="#&#x5217;&#x8868;" class="headerlink" title="&#x5217;&#x8868;"></a>&#x5217;&#x8868;</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#引用"><span class="nav-number">1.0.2.3.</span> <span class="nav-text"><a href="#&#x5F15;&#x7528;" class="headerlink" title="&#x5F15;&#x7528;"></a>&#x5F15;&#x7528;</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#图片与链接"><span class="nav-number">1.0.2.4.</span> <span class="nav-text"><a href="#&#x56FE;&#x7247;&#x4E0E;&#x94FE;&#x63A5;" class="headerlink" title="&#x56FE;&#x7247;&#x4E0E;&#x94FE;&#x63A5;"></a>&#x56FE;&#x7247;&#x4E0E;&#x94FE;&#x63A5;</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#粗体与斜体"><span class="nav-number">1.0.2.5.</span> <span class="nav-text"><a href="#&#x7C97;&#x4F53;&#x4E0E;&#x659C;&#x4F53;" class="headerlink" title="&#x7C97;&#x4F53;&#x4E0E;&#x659C;&#x4F53;"></a>&#x7C97;&#x4F53;&#x4E0E;&#x659C;&#x4F53;</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#代码块"><span class="nav-number">1.0.2.6.</span> <span class="nav-text"><a href="#&#x4EE3;&#x7801;&#x5757;" class="headerlink" title="&#x4EE3;&#x7801;&#x5757;"></a>&#x4EE3;&#x7801;&#x5757;</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#分割线"><span class="nav-number">1.0.2.7.</span> <span class="nav-text"><a href="#&#x5206;&#x5272;&#x7EBF;" class="headerlink" title="&#x5206;&#x5272;&#x7EBF;"></a>&#x5206;&#x5272;&#x7EBF;</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#这里是分割线的内容"><span class="nav-number">1.1.</span> <span class="nav-text"><a href="#&#x8FD9;&#x91CC;&#x662F;&#x5206;&#x5272;&#x7EBF;&#x7684;&#x5185;&#x5BB9;" class="headerlink" title="&#x8FD9;&#x91CC;&#x662F;&#x5206;&#x5272;&#x7EBF;&#x7684;&#x5185;&#x5BB9;"></a>&#x8FD9;&#x91CC;&#x662F;&#x5206;&#x5272;&#x7EBF;&#x7684;&#x5185;&#x5BB9;</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#换行"><span class="nav-number">1.1.0.1.</span> <span class="nav-text"><a href="#&#x6362;&#x884C;" class="headerlink" title="&#x6362;&#x884C;"></a>&#x6362;&#x884C;</span></a></li></ol></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">wms1993</span>
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Thème &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.3</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.3"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.3"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
