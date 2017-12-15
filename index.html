@@ -80,11 +80,11 @@
 
 
 <meta property="og:type" content="website">
-<meta property="og:title" content="Hexo">
+<meta property="og:title" content="王梦思的个人博客">
 <meta property="og:url" content="http://yoursite.com/index.html">
-<meta property="og:site_name" content="Hexo">
+<meta property="og:site_name" content="王梦思的个人博客">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Hexo">
+<meta name="twitter:title" content="王梦思的个人博客">
 
 
 
@@ -120,7 +120,7 @@
 
 
 
-  <title>Hexo</title>
+  <title>王梦思的个人博客</title>
   
 
 
@@ -151,7 +151,7 @@
     <div class="custom-logo-site-title">
       <a href="/"  class="brand" rel="start">
         <span class="logo-line-before"><i></i></span>
-        <span class="site-title">Hexo</span>
+        <span class="site-title">王梦思的个人博客</span>
         <span class="logo-line-after"><i></i></span>
       </a>
     </div>
@@ -181,7 +181,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
             
-            Startseite
+            Accueil
           </a>
         </li>
       
@@ -191,7 +191,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
             
-            Archiv
+            Archives
           </a>
         </li>
       
@@ -228,16 +228,1213 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/12/15/hello-world/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/12/15/RxJava-详解/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="John Doe">
+      <meta itemprop="name" content="wms1993">
       <meta itemprop="description" content="">
       <meta itemprop="image" content="/images/avatar.gif">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Hexo">
+      <meta itemprop="name" content="王梦思的个人博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/12/15/RxJava-详解/" itemprop="url">RxJava 详解</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posté le</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-12-15T19:13:44+08:00">
+                2017-12-15
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="RxJava-详解"><a href="#RxJava-详解" class="headerlink" title="RxJava 详解"></a>RxJava 详解</h2><p>RxJava可以说现在是相当的火。前段时间面试也被经常问到，由于以前项目中没用到过，所以一直只是听说这个东西，只是大概了解了一下，所以这方面问题回答的不是很好。那RxJava到底是什么呢？</p>
+<blockquote>
+<p>官方解释：RxJava – Reactive Extensions for the JVM – a library for composing asynchronous and event-based programs using observable sequences for the Java VM.</p>
+<p>翻译：一个在 Java VM 上使用可观测的序列来组成异步的、基于事件的程序的库</p>
+</blockquote>
+<p>上面的解释你可能一脸懵逼，但是没关系，我们接下来一起来学习下。</p>
+<p>本文转自 ： <a href="http://gank.io/post/560e15be2dca930e00da1083" target="_blank" rel="noopener">http://gank.io/post/560e15be2dca930e00da1083</a></p>
+<p>Github地址：<br><a href="https://github.com/ReactiveX/RxJava" target="_blank" rel="noopener">https://github.com/ReactiveX/RxJava</a><br><a href="https://github.com/ReactiveX/RxAndroid" target="_blank" rel="noopener">https://github.com/ReactiveX/RxAndroid</a></p>
+<p>引入依赖：<br>compile ‘io.reactivex:rxjava:1.0.14’<br>compile ‘io.reactivex:rxandroid:1.0.1’ </p>
+<h2 id="RxJava-到底是什么"><a href="#RxJava-到底是什么" class="headerlink" title="RxJava 到底是什么"></a>RxJava 到底是什么</h2><hr>
+<p>RxJava 在 GitHub 主页上的自我介绍是 “a library for composing asynchronous and event-based programs using observable sequences for the Java VM”（一个在 Java VM 上使用可观测的序列来组成异步的、基于事件的程序的库）。这就是 RxJava ，概括得非常精准。</p>
+<p>然而，对于初学者来说，这太难看懂了。因为它是一个『总结』，而初学者更需要一个『引言』。</p>
+<p>其实， RxJava 的本质可以压缩为异步这一个词。说到根上，它就是一个实现异步操作的库，而别的定语都是基于这之上的。</p>
+<h2 id="RxJava-好在哪"><a href="#RxJava-好在哪" class="headerlink" title="RxJava 好在哪"></a>RxJava 好在哪</h2><hr>
+<p>换句话说，『同样是做异步，为什么人们用它，而不用现成的 AsyncTask / Handler / XXX / … ？』</p>
+<p>一个词：简洁。</p>
+<p>异步操作很关键的一点是程序的简洁性，因为在调度过程比较复杂的情况下，异步代码经常会既难写也难被读懂。 Android 创造的 AsyncTask 和Handler ，其实都是为了让异步代码更加简洁。RxJava 的优势也是简洁，但它的简洁的与众不同之处在于，<strong>随着程序逻辑变得越来越复杂，它依然能够保持简洁</strong>。</p>
+<p>假设有这样一个需求：界面上有一个自定义的视图 imageCollectorView ，它的作用是显示多张图片，并能使用 addImage(Bitmap) 方法来任意增加显示的图片。现在需要程序将一个给出的目录数组 File[] folders 中每个目录下的 png 图片都加载出来并显示在 imageCollectorView 中。需要注意的是，由于读取图片的这一过程较为耗时，需要放在后台执行，而图片的显示则必须在 UI 线程执行。常用的实现方式有多种，我这里贴出其中一种：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">new Thread() &#123;</span><br><span class="line">    @Override</span><br><span class="line">    public void run() &#123;</span><br><span class="line">        super.run();</span><br><span class="line">        for (File folder : folders) &#123;</span><br><span class="line">            File[] files = folder.listFiles();</span><br><span class="line">            for (File file : files) &#123;</span><br><span class="line">                if (file.getName().endsWith(&quot;.png&quot;)) &#123;</span><br><span class="line">                    final Bitmap bitmap = getBitmapFromFile(file);</span><br><span class="line">                    getActivity().runOnUiThread(new Runnable() &#123;</span><br><span class="line">                        @Override</span><br><span class="line">                        public void run() &#123;</span><br><span class="line">                            imageCollectorView.addImage(bitmap);</span><br><span class="line">                        &#125;</span><br><span class="line">                    &#125;);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;.start();</span><br></pre></td></tr></table></figure>
+<p>而如果使用 RxJava ，实现方式是这样的：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">Observable.from(folders)</span><br><span class="line">    .flatMap(new Func1&lt;File, Observable&lt;File&gt;&gt;() &#123;</span><br><span class="line">        @Override</span><br><span class="line">        public Observable&lt;File&gt; call(File file) &#123;</span><br><span class="line">            return Observable.from(file.listFiles());</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;)</span><br><span class="line">    .filter(new Func1&lt;File, Boolean&gt;() &#123;</span><br><span class="line">        @Override</span><br><span class="line">        public Boolean call(File file) &#123;</span><br><span class="line">            return file.getName().endsWith(&quot;.png&quot;);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;)</span><br><span class="line">    .map(new Func1&lt;File, Bitmap&gt;() &#123;</span><br><span class="line">        @Override</span><br><span class="line">        public Bitmap call(File file) &#123;</span><br><span class="line">            return getBitmapFromFile(file);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;)</span><br><span class="line">    .subscribeOn(Schedulers.io())</span><br><span class="line">    .observeOn(AndroidSchedulers.mainThread())</span><br><span class="line">    .subscribe(new Action1&lt;Bitmap&gt;() &#123;</span><br><span class="line">        @Override</span><br><span class="line">        public void call(Bitmap bitmap) &#123;</span><br><span class="line">            imageCollectorView.addImage(bitmap);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;);</span><br></pre></td></tr></table></figure>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/12/15/Android-5-0过渡动画Transition/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="wms1993">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="王梦思的个人博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/12/15/Android-5-0过渡动画Transition/" itemprop="url">Android 5.0过渡动画Transition</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posté le</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-12-15T19:13:34+08:00">
+                2017-12-15
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="Android-Transition动画"><a href="#Android-Transition动画" class="headerlink" title="Android Transition动画"></a>Android Transition动画</h1><p>动画在app中的重要性我不用多说了，在应用中使用一些符合系统设计规范的动画可以显著提升用户体验和自身逼格，我们也接触过很多种动画，帧动画和属性动画大家应该很熟悉了，用的也比较多，今天我们要说的是<code>Transition</code>动画，这个Api是在API 19(Android 4.4)中加入的。</p>
+<h2 id="为什么要引入Transition？"><a href="#为什么要引入Transition？" class="headerlink" title="为什么要引入Transition？"></a>为什么要引入Transition？</h2><p>由于在Android引入了Metrial Desigon之后，动画的场面越来越大，比如以前我们制作一个动画可能涉及到的View就一个，或者就那么几个，如果我们一个动画中涉及到了当前Activity视图树中的各个View，那么情况就复杂了。比如我们要一次针对视图树中的10个View进行动画，这些View的效果都不同，可能有的是平移，有的是旋转，有的是淡入淡出，那么不管是使用之前哪种方式的动画，我们都需要为每个View定义一个开始状态和结束状态【关键帧，比如放缩，我们得设置fromXScale和toXScale 】，随着View个数的增加，这个情况会越来越复杂。Transition主要做的事情是：</p>
+<ol>
+<li>捕获每一个 View 的起始和结束状态</li>
+<li>根据这些数据来创建从一个场景到另一个场景间的过渡动画。</li>
+</ol>
+<h2 id="Transition-例子"><a href="#Transition-例子" class="headerlink" title="Transition 例子"></a>Transition 例子</h2><p>考虑这样一个例子，当用户点击屏幕，让activity中的view逐渐消失。使用安卓的transition框架，我们只需几行代码就可完成，如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">public class ExampleActivity extends Activity implements View.OnClickListener &#123;</span><br><span class="line">    private ViewGroup mRootView;</span><br><span class="line">    private View mRedBox, mGreenBox, mBlueBox, mBlackBox;</span><br><span class="line">    @Override</span><br><span class="line">    protected void onCreate(Bundle savedInstanceState) &#123;</span><br><span class="line">        super.onCreate(savedInstanceState);</span><br><span class="line">        setContentView(R.layout.activity_main);</span><br><span class="line">        mRootView = (ViewGroup) findViewById(R.id.layout_root_view);</span><br><span class="line">        mRootView.setOnClickListener(this);</span><br><span class="line">        mRedBox = findViewById(R.id.red_box);</span><br><span class="line">        mGreenBox = findViewById(R.id.green_box);</span><br><span class="line">        mBlueBox = findViewById(R.id.blue_box);</span><br><span class="line">        mBlackBox = findViewById(R.id.black_box);</span><br><span class="line">    &#125;</span><br><span class="line">    @Override</span><br><span class="line">    public void onClick(View v) &#123;</span><br><span class="line">        TransitionManager.beginDelayedTransition(mRootView, new Fade());</span><br><span class="line">        toggleVisibility(mRedBox, mGreenBox, mBlueBox, mBlackBox);</span><br><span class="line">    &#125;</span><br><span class="line">    private static void toggleVisibility(View... views) &#123;</span><br><span class="line">        for (View view : views) &#123;</span><br><span class="line">            boolean isVisible = view.getVisibility() == View.VISIBLE;</span><br><span class="line">            view.setVisibility(isVisible ? View.INVISIBLE : View.VISIBLE);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>为了更好的理解幕后发生的事情，让我们来一步一步的分析，假设最开始每个view都是可见的：</p>
+<ol>
+<li><p>当点击事件发生之后调用TransitionManager的beginDelayedTransition()方法，并且传递了mRootView和一个Fade对象最为参数。之后，framework会立即调用transition类的captureStartValues()方法为每个view保存其当前的可见状态(visibility)。</p>
+</li>
+<li><p>当beginDelayedTransition返回之后，在上面的代码中将每个view设置为不可见。</p>
+</li>
+<li><p>在接下来的显示中framework会调用transition类的captureEndValues()方法，记录每个view最新的可见状态。</p>
+</li>
+<li><p>接着，framework调用transition的createAnimator()方法。transition会分析每个view的开始和结束时的数据发现view在开始时是可见的，结束时是不可见的。Fade（transition的子类）会利用这些信息创建一个用于把view的alpha属性变为0的AnimatorSet，并且将此AnimatorSet对象返回。</p>
+</li>
+</ol>
+<blockquote>
+<p>注意: 读者可以在这里回想假如不使用transition框架，我们自己使用属性动画（Animator）来实现是不是复杂很多，其实transition框架的作用就是封装了属性动画的操作。</p>
+</blockquote>
+<p>这个简单的例子强调了transition框架的两个主要优点。第一、Transitions抽象和封装了属性动画，Animator的概念对开发者来说是透明的，因此它极大的精简了代码量。开发者所做的所有事情只是改变一下view前后的状态数据，Transition就会自动的根据状态的区别去生成动画效果。第二、不同场景之间变换的动画效果可以简单的通过使用不同的Transition类来改变，本例中用的是Fade。</p>
+<p><img src="http://img.blog.csdn.net/20170616104545959?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvd21zMTk5MzExMjc1MzE5/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt="这里写图片描述"></p>
+<p>实现上图中的那两个不同的动画效果可以将Fade替换成Slide或者Explode即可。在接下来的文章中你将会发现，这些优点将使得我们只用少量代码就可以创建复杂的Activity 和Fragment切换动画。在接下来的小节中，将看到是如何使用Lollipop的Activity 和Fragment transition API来实现这种变换的。</p>
+<h2 id="5-0中的Activity和Fragment-Transition"><a href="#5-0中的Activity和Fragment-Transition" class="headerlink" title="5.0中的Activity和Fragment Transition"></a>5.0中的Activity和Fragment Transition</h2><p>Android 5.0中Transition可以被用来实现Activity或者Fragment切换时的异常复杂的动画效果。虽然在以前的版本中，已经可以使用Activity的overridePendingTransition() 和 FragmentTransaction的setCustomAnimation()来实现Activity或者Fragment的动画切换，但是他们仅仅局限与将整个视图一起动画变换。新的Lollipop api更进了一步，让单独的view也可以在进入或者退出其布局容器中时发生动画效果，甚至还可以在不同的activity/Fragment中共享一个view。</p>
+<p>在开始讲解之前我们先做一些约定，虽然下面的约定是针对activity的，但是在Fragment中也是一样的约定。</p>
+<blockquote>
+<p>A和B分别是两个Activity，假设activity A 调用activity B。将A代表调用Activity ，B代表被调用Activity。</p>
+</blockquote>
+<p>Activity transition API围绕退出（exit），进入（enter），返回（return）和再次进入（reenter）四种transition。按照上面对A和B的约定，我这样描述这一过程。</p>
+<blockquote>
+<p>Activity A的退出变换（exit transition）决定了在A调用B的时候，A中的View是如何播放动画的。<br><br>Activity B的进入变换（enter transition）决定了在A调用B的时候，B中的View是如何播放动画的。<br><br>Activity B的返回变换（return transition）决定了在B返回A的时候，B中的View是如何播放动画的。<br><br>Activity A的再次进入变换（reenter transition）决定了在B返回A的时候，A中的View是如何播放动画的。<br></p>
+</blockquote>
+<p>最后framework提供了两种Activity transition- 内容transition和共享元素的transition：</p>
+<blockquote>
+<p>A content transition determines how an activity’s non-shared views—called transitioning views—enter or exit the activity scene.<br><br>A shared element transition determines how an activity’s shared elements (also called hero views) are animated between two activities.</p>
+</blockquote>
+<p><img src="http://www.jcodecraeer.com/uploads/150113/1-150113195F54J.gif" alt=""><br>上图中演示了Google Play Newsstand 应用的效果，虽然我们无法查看它的源码，但是我敢打赌它用了以下的transition：</p>
+<blockquote>
+<p>activity A 中exit和reenter transition是为null的，因为A中的非共享view在退出和再次进入的时候没有动画效果。<br><br>activity B中的enter content transition使用了自定义的slide-in变换。该变换使B中list的元素从下到上过度。<br><br>activity B中return content transition是一组TransitionSet，同时播放了两个子元素的变换：上半部分和下半部分的slide变换。看起来就像整个界面被从从中间分割成了两半。<br><br>enter and return 共享元素变换是用了ChangeImageTransform。让两个activity中的ImageView无缝切换。<br></p>
+</blockquote>
+<h2 id="Activity-Transition-API介绍"><a href="#Activity-Transition-API介绍" class="headerlink" title="Activity Transition API介绍"></a>Activity Transition API介绍</h2><p>用5.0的API创建一个基本的Activity transition是较为简单的。下面的总结是实现Activity transition的步骤。这篇文章主要是对Activity transition做简单的介绍，作为引入的篇章。在后续的文章中我们再介绍一些高级的用法。</p>
+<ul>
+<li>在调用与被调用的activity中，通过设定Window.FEATURE_ACTIVITY_TRANSITIONS  和 Window.FEATURE_CONTENT_TRANSITIONS 来启用transition api ，可以通过代码也可以通过设置主题来启用：</li>
+</ul>
+<p>代码方式，在setContentView之前调用：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">getWindow().requestFeature(Window.FEATURE_CONTENT_TRANSITIONS);</span><br></pre></td></tr></table></figure>
+<p>主题xml:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;item name=&quot;android:windowContentTransitions&quot;&gt;true&lt;/item&gt;</span><br></pre></td></tr></table></figure>
+<ul>
+<li><p>分别在调用与被调用的activity中设置exit 和enter transition。Material主题默认会将exit的transition设置成null而enter的transition设置成Fade .如果reenter 或者 return transition没有明确设置，则将用exit 和enter的transition替代。</p>
+</li>
+<li><p>分别在调用与被调用的activity中设置exit 和enter 共享元素的transition。Material主题默认会将exit的共享元素transition设置成null而enter的共享元素transition设置成@android:transition/move.如果reenter 或者 return transition没有明确设置，则将用exit 和enter的共享元素transition替代。<br><br><br>开始一个activity的content transaction需要调用startActivity(Context, Bundle)方法，将下面的bundle作为第二个参数：<br><br><code>ActivityOptions.makeSceneTransitionAnimation(activity, pairs).toBundle();</code><br><br>其中pairs参数是一个数组：Pair<view, string=""> ，该数组列出了你想在activity之间共享的view和view的名称。别忘了给你的共享元素加上一个唯一的名称，否则transition可能不会有正确的结果。</view,></p>
+</li>
+<li><p>在代码中触发通过finishAfterTransition()方法触发返回动画，而不是调用finish()方法。</p>
+</li>
+<li><p>默认情况下，material主题的应用中enter/return的content transition会在exit/reenter的content transitions结束之前开始播放（只是稍微早于），这样会看起来更加连贯。如果你想明确屏蔽这种行为，可以调用setWindowAllowEnterTransitionOverlap() 和 setWindowAllowReturnTransitionOverlap()方法。</p>
+</li>
+</ul>
+<h2 id="Fragment-Transition-API介绍"><a href="#Fragment-Transition-API介绍" class="headerlink" title="Fragment Transition API介绍"></a>Fragment Transition API介绍</h2><p>如果你想在Fragment中使用transition，除了一小部分区别之外和activity大体一致：</p>
+<ol>
+<li><p>Content的exit, enter, reenter, 和return transition需要调用fragment的相应方法来设置，或者通过fragment的xml属性来设置。</p>
+</li>
+<li><p>共享元素的enter和return transition也n需要调用fragment的相应方法来设置，或者通过fragment的xml属性来设置。</p>
+</li>
+<li><p>虽然在activity中transition是被startActivity()和finishAfterTransition()触发的，但是Fragment的transition却是在其被FragmentTransaction执行下列动作的时候自动发生的。added, removed, attached, detached, shown, ，hidden。</p>
+</li>
+<li><p>在Fragment commit之前，共享元素需要通过调用addSharedElement(View, String) 方法来成为FragmentTransaction的一部分。</p>
+</li>
+</ol>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/12/15/Android-浏览器中打开app/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="wms1993">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="王梦思的个人博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/12/15/Android-浏览器中打开app/" itemprop="url">Android 浏览器中打开app</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posté le</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-12-15T19:13:27+08:00">
+                2017-12-15
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="Android-浏览器中打开app"><a href="#Android-浏览器中打开app" class="headerlink" title="Android 浏览器中打开app"></a>Android 浏览器中打开app</h1><p>我们经常看到当点击一个链接的时候，跳转到app，比如当我们在网页端浏览新闻的时候，要想查看更多评论等就会提示你跳转到app内打开查看，那是如何实现网页中打开app的呢？</p>
+<p>##怎么实现？</p>
+<hr>
+<p>要想实现浏览器内打开app，其实我们可以看做就是打开一个链接，只是我们普通的链接都是http或者https开头的，如果要想打开app，那我么需要自定义这个schem。</p>
+<p>首先我们来学下下uri的组成吧</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">scheme://host:port/path?qureyParameter=queryString</span><br></pre></td></tr></table></figure>
+<p>一个uri是由上面几个部分组成的，分别是：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https://www.baidu.com/images?keyword=花儿</span><br></pre></td></tr></table></figure>
+<ol>
+<li><strong>scheme:</strong> scheme就是上面例子中的https</li>
+<li><strong>host:</strong> 在url中就是我们的域名或者ip地址(包含端口)</li>
+<li><strong>path:</strong> 主机资源的具体地址。如目录和文件名</li>
+<li><strong>params:</strong> 传递的参数</li>
+</ol>
+<p>###第一步：在AndroidManifest.xml中注册<br>html中代码很简单，就这么一行，是不是html写好了就可以打开app了呢？当然不可以，我们需要在我们的app中注册这个uri。现在来到app中，我们在AndroidManifest.xml中加入，我们在MainActivity中注册。注册代码如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">&lt;activity android:name=&quot;.MainActivity&quot;&gt;</span><br><span class="line">        &lt;intent-filter&gt;</span><br><span class="line">            &lt;action android:name=&quot;android.intent.action.MAIN&quot;/&gt;</span><br><span class="line"></span><br><span class="line">            &lt;category android:name=&quot;android.intent.category.LAUNCHER&quot;/&gt;</span><br><span class="line">        &lt;/intent-filter&gt;</span><br><span class="line"></span><br><span class="line">		 //注册scheme</span><br><span class="line">        &lt;intent-filter&gt;</span><br><span class="line">            &lt;action android:name=&quot;android.intent.action.VIEW&quot;/&gt;</span><br><span class="line">            &lt;category android:name=&quot;android.intent.category.DEFAULT&quot;/&gt;</span><br><span class="line">            &lt;category android:name=&quot;android.intent.category.BROWSABLE&quot;/&gt;</span><br><span class="line">            //这里myapp一定要和html中scheme一致。</span><br><span class="line">            &lt;data android:scheme=&quot;myapp&quot;/&gt;</span><br><span class="line">        &lt;/intent-filter&gt;</span><br><span class="line"></span><br><span class="line">&lt;/activity&gt;</span><br></pre></td></tr></table></figure>
+<p>###第二步：在网页中定义一个uri<br>所以我们可以给我们的app定义一个uri，html中代码如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;a href = &apos;myapp://wms.com/openwith?name=wms1993&amp;age=24&apos;&gt; 打开app &lt;/a&gt;</span><br></pre></td></tr></table></figure>
+<p>当我们通过浏览器打开链接的时候，就会自动打开我们的app了，不同浏览器可能提示不一样，我用uc浏览器打开就会提示如下：<br><img src="http://img.blog.csdn.net/20170612094434433?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvd21zMTk5MzExMjc1MzE5/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt="这里写图片描述"></p>
+<blockquote>
+<p>注意：这里不能直接在浏览器地址栏中直接输入我们的url，这样的话浏览器默认会给我们的url加上http，那么就无法打开应用了，最好是嵌在网页中。</p>
+</blockquote>
+<p>##怎么传值<br>经过上面两个步骤，我们就可以简单实现通过浏览器打开app了。现在我们要讲的是怎么给我们的应用传值呢？我们知道，在http传输的时候，有get请求和post请求，当然这种情况下我们只能通过get请求的方式传值，get方式传值就是把值放在url的后面，如上面例子中，我们传递了两个值</p>
+<ol>
+<li>name = wms1993</li>
+<li>age = 24</li>
+</ol>
+<p>对于网页中我们和普通的http没啥区别，现在关键在我们app端，该怎么接收值呢？看下代码：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line"> * create by wms1993</span><br><span class="line"> */</span><br><span class="line">public class MainActivity extends AppCompatActivity &#123;</span><br><span class="line"></span><br><span class="line">    private static final String TAG = &quot;MainActivity&quot;;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    protected void onCreate(Bundle savedInstanceState) &#123;</span><br><span class="line">        super.onCreate(savedInstanceState);</span><br><span class="line">        setContentView(R.layout.activity_main);</span><br><span class="line"></span><br><span class="line">        if (getIntent().getAction().equals(Intent.ACTION_VIEW)) &#123;</span><br><span class="line">            //通过浏览器打开</span><br><span class="line">            Uri uri = getIntent().getData();</span><br><span class="line">            String name = uri.getQueryParameter(&quot;name&quot;);</span><br><span class="line">            String age = uri.getQueryParameter(&quot;age&quot;);</span><br><span class="line">            Log.e(TAG, &quot;onCreate: name = &quot; + name);</span><br><span class="line">            Log.e(TAG, &quot;onCreate: age = &quot; + age);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>logcat如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">06-12 09:57:43.064 12399-12399/bluetooth.wms.com.openappbybrowser E/MainActivity: onCreate: name = wms1993</span><br><span class="line">06-12 09:57:43.065 12399-12399/bluetooth.wms.com.openappbybrowser E/MainActivity: onCreate: age = 24</span><br></pre></td></tr></table></figure>
+<p>当我们打开app的时候，会调用onCreate方法，这里我们看看getIntent的Action是不是ACTION_VIEW，如果是那么是从浏览器中打开的。</p>
+<h2 id="一些问题"><a href="#一些问题" class="headerlink" title="一些问题"></a>一些问题</h2><p>经过上面的步骤，我们实现了浏览器打开app以及给app传值的操作，那么是不是就这样结束了呢？当然不是，这里面还有一些小问题，加入我们app是一个新闻类的app，当我们通过网页浏览新闻的时候，然后点击了新闻详情，里面有一个提示在app内查看的时候，这种情况会有如下问题：</p>
+<ol>
+<li>当我们新闻app是已经打开的时候，我们从浏览器过来，当按下返回键的时候，是否能回到之前打开的界面？</li>
+<li>当我们的新闻app没有打开时，我们从浏览器过来，当按下返回键的时候，我们想回到新闻首页而不是回到上一个应用程序，我们该怎么做？</li>
+</ol>
+<p>先来看下默认情况下是Android是如何操作的,我们现在通过浏览器打开app（app之前没打开），这时候我们按下Home键，然后进入，这时候会发生什么事？现在MainActivity.java中onCreate方法加上打印。当我们通过浏览器打开app，日志如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">06-12 10:17:07.738 16021-16021/bluetooth.wms.com.openappbybrowser E/MainActivity: onCreate...</span><br><span class="line">06-12 10:17:07.738 16021-16021/bluetooth.wms.com.openappbybrowser E/MainActivity: onCreate: name = wms1993</span><br><span class="line">06-12 10:17:07.738 16021-16021/bluetooth.wms.com.openappbybrowser E/MainActivity: onCreate: age = 24</span><br></pre></td></tr></table></figure>
+<p>当按下Home键返回桌面的时候，我们在点击桌面图标打开app，这时候日志如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">06-12 10:17:59.518 16021-16021/bluetooth.wms.com.openappbybrowser E/MainActivity: onCreate...</span><br></pre></td></tr></table></figure>
+<p>通过日志可以看出，这时候应用重新创建了。<br>默认情况下，浏览器唤起的页面按返回键是回不到之前打开的界面的，那么这是为啥呢？</p>
+<p>首先大家应该了解下启动模式，我以前博客中有一篇关于启动模式的文章，<a href="http://blog.csdn.net/wms199311275319/article/details/72722747" target="_blank" rel="noopener">Activity 启动模式</a> ,下面我们简单介绍下任务栈的概念。默认情况下，如果没有对 <code>Activity</code> 设置 <code>TaskAffinity</code> 属性，一个应用的所有 <code>Activity</code> 都是运行在同一个任务栈的，任务栈的名称为应用的 <code>PackageName</code>。如果从应用A启动应用B的某个 <code>Activity</code> C，则 C 会运行在 A 的任务栈中。说到这里，相信大家应该明白为啥了吧。</p>
+<p>当我们从Launcher启动app时，app运行在Launcher的任务栈中，从浏览器中打开app则运行在浏览器任务栈中，那如何解决这个问题呢？</p>
+<p>由于从桌面点击应用会创建自己的应用栈，那么如果我们可以把浏览器任务栈中的界面移动到应用本身的任务栈中。那么怎么将 <code>Activity</code> 从其他任务栈中移到自己的任务栈中呢？方法很简单，只需要在相应的 <code>Activity</code> 中配置 <code>allowTaskReparenting</code> 属性 为 <code>true</code> 即可。但是有时候我们可能不光要将一个 Activity 移过来，有时候我们需要将整个应用移动过来，这时候我们可以将<code>allowTaskReparenting</code> 添加到<code>application</code> 上，代码如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">&lt;application</span><br><span class="line">        android:allowBackup=&quot;true&quot;</span><br><span class="line">        android:icon=&quot;@mipmap/ic_launcher&quot;</span><br><span class="line">        android:label=&quot;@string/app_name&quot;</span><br><span class="line">        android:roundIcon=&quot;@mipmap/ic_launcher_round&quot;</span><br><span class="line">        //如果想将整个应用都移动到则在这里添加</span><br><span class="line">        android:allowTaskReparenting=&quot;true&quot;</span><br><span class="line">        android:theme=&quot;@style/AppTheme&quot;&gt;</span><br><span class="line">        &lt;activity</span><br><span class="line">       	  //如果只想移动某个Activity到则在这里添加</span><br><span class="line">       	  android:allowTaskReparenting=&quot;true&quot;</span><br><span class="line">            android:name=&quot;.MainActivity&quot;&gt;</span><br><span class="line">            &lt;intent-filter&gt;</span><br><span class="line">                &lt;action android:name=&quot;android.intent.action.MAIN&quot;/&gt;</span><br><span class="line"></span><br><span class="line">                &lt;category android:name=&quot;android.intent.category.LAUNCHER&quot;/&gt;</span><br><span class="line">            &lt;/intent-filter&gt;</span><br><span class="line"></span><br><span class="line">            &lt;intent-filter&gt;</span><br><span class="line">                &lt;action android:name=&quot;android.intent.action.VIEW&quot;/&gt;</span><br><span class="line"></span><br><span class="line">                &lt;category android:name=&quot;android.intent.category.DEFAULT&quot;/&gt;</span><br><span class="line">                &lt;category android:name=&quot;android.intent.category.BROWSABLE&quot;/&gt;</span><br><span class="line"></span><br><span class="line">                &lt;data android:scheme=&quot;myapp&quot;/&gt;</span><br><span class="line">            &lt;/intent-filter&gt;</span><br><span class="line"></span><br><span class="line">        &lt;/activity&gt;</span><br><span class="line"></span><br><span class="line">        &lt;activity android:name=&quot;.PageDetailActivity&quot;/&gt;</span><br><span class="line">&lt;/application&gt;</span><br></pre></td></tr></table></figure>
+<p>这样这个问题就解决了。</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/12/15/Android-任务栈/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="wms1993">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="王梦思的个人博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/12/15/Android-任务栈/" itemprop="url">Android 任务栈</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posté le</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-12-15T19:13:18+08:00">
+                2017-12-15
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="Android-任务和返回栈"><a href="#Android-任务和返回栈" class="headerlink" title="Android 任务和返回栈"></a>Android 任务和返回栈</h1><p>应用通常包含多个 Activity。每个 Activity 均应围绕用户可以执行的特定操作设计，并且能够启动其他 Activity。 例如，电子邮件应用可能有一个 Activity 显示新邮件的列表。用户选择某邮件时，会打开一个新 Activity 以查看该邮件。</p>
+<p>一个 Activity 甚至可以启动设备上其他应用中存在的 Activity。例如，如果应用想要发送电子邮件，则可将 Intent 定义为执行“发送”操作并加入一些数据，如电子邮件地址和电子邮件。 然后，系统将打开其他应用中声明自己处理此类 Intent 的 Activity。在这种情况下，Intent 是要发送电子邮件，因此将启动电子邮件应用的“撰写”Activity（如果多个 Activity 支持相同 Intent，则系统会让用户选择要使用的 Activity）。发送电子邮件时，Activity 将恢复，看起来好像电子邮件 Activity 是您的应用的一部分。 即使这两个 Activity 可能来自不同的应用，但是 Android 仍会将 Activity 保留在相同的任务中，以维护这种无缝的用户体验。</p>
+<p>任务是指在执行特定作业时与用户交互的一系列 Activity。 这些 Activity 按照各自的打开顺序排列在堆栈（即返回栈）中。</p>
+<p>设备主屏幕是大多数任务的起点。当用户触摸应用启动器中的图标（或主屏幕上的快捷方式）时，该应用的任务将出现在前台。 如果应用不存在任务（应用最近未曾使用），则会创建一个新任务，并且该应用的“主”Activity 将作为堆栈中的根 Activity 打开。</p>
+<p>当前 Activity 启动另一个 Activity 时，该新 Activity 会被推送到堆栈顶部，成为焦点所在。 前一个 Activity 仍保留在堆栈中，但是处于停止状态。Activity 停止时，系统会保持其用户界面的当前状态。 用户按“返回”按钮时，当前 Activity 会从堆栈顶部弹出（Activity 被销毁），而前一个 Activity 恢复执行（恢复其 UI 的前一状态）。 堆栈中的 Activity 永远不会重新排列，仅推入和弹出堆栈：由当前 Activity 启动时推入堆栈；用户使用“返回”按钮退出时弹出堆栈。 因此，返回栈以“后进先出”对象结构运行。 图 1 通过时间线显示 Activity 之间的进度以及每个时间点的当前返回栈，直观呈现了这种行为。</p>
+<p><img src="http://img.blog.csdn.net/20170612144128335?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvd21zMTk5MzExMjc1MzE5/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt="这里写图片描述"></p>
+<p>上图显示任务中的每个新 Activity 如何向返回栈添加项目。 用户按“返回”按钮时，当前 Activity 随即被销毁，而前一个 Activity 恢复执行。</p>
+<p>如果用户继续按“返回”，堆栈中的相应 Activity 就会弹出，以显示前一个 Activity，直到用户返回主屏幕为止（或者，返回任务开始时正在运行的任意 Activity）。 当所有 Activity 均从堆栈中移除后，任务即不复存在。</p>
+<p>任务是一个有机整体，当用户开始新任务或通过“主页”按钮转到主屏幕时，可以移动到“后台”。 尽管在后台时，该任务中的所有 Activity 全部停止，但是任务的返回栈仍旧不变，也就是说，当另一个任务发生时，该任务仅仅失去焦点而已，如图 2 中所示。然后，任务可以返回到“前台”，用户就能够回到离开时的状态。 例如，假设当前任务（任务 A）的堆栈中有三个 Activity，即当前 Activity 下方还有两个 Activity。 用户先按“主页”按钮，然后从应用启动器启动新应用。 显示主屏幕时，任务 A 进入后台。新应用启动时，系统会使用自己的 Activity 堆栈为该应用启动一个任务（任务 B）。与该应用交互之后，用户再次返回主屏幕并选择最初启动任务 A 的应用。现在，任务 A 出现在前台，其堆栈中的所有三个 Activity 保持不变，而位于堆栈顶部的 Activity 则会恢复执行。 此时，用户还可以通过转到主屏幕并选择启动该任务的应用图标（或者，通过从概览屏幕选择该应用的任务）切换回任务 B。这是 Android 系统中的一个多任务示例。</p>
+<blockquote>
+<p>注：后台可以同时运行多个任务。但是，如果用户同时运行多个后台任务，则系统可能会开始销毁后台 Activity，以回收内存资源，从而导致 Activity 状态丢失</p>
+</blockquote>
+<p><img src="http://img.blog.csdn.net/20170612144314900?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvd21zMTk5MzExMjc1MzE5/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt="这里写图片描述"></p>
+<p>由于返回栈中的 Activity 永远不会重新排列，因此如果应用允许用户从多个 Activity 中启动特定 Activity，则会创建该 Activity 的新实例并推入堆栈中（而不是将 Activity 的任一先前实例置于顶部）。 因此，应用中的一个 Activity 可能会多次实例化（即使 Activity 来自不同的任务），如上图所示。因此，如果用户使用“返回”按钮向后导航，则会按 Activity 每个实例的打开顺序显示这些实例（每个实例的 UI 状态各不相同）。 但是，如果您不希望 Activity 多次实例化，则可修改此行为。 具体操作方法将在后面的管理任务部分中讨论。</p>
+<p>Activity 和任务的默认行为总结如下：</p>
+<ul>
+<li><p>当 Activity A 启动 Activity B 时，Activity A 将会停止，但系统会保留其状态（例如，滚动位置和已输入表单中的文本）。如果用户在处于 Activity B 时按“返回”按钮，则 Activity A 将恢复其状态，继续执行。</p>
+</li>
+<li><p>用户通过按“主页”按钮离开任务时，当前 Activity 将停止且其任务会进入后台。 系统将保留任务中每个 Activity 的状态。如果用户稍后通过选择开始任务的启动器图标来恢复任务，则任务将出现在前台并恢复执行堆栈顶部的 Activity。</p>
+</li>
+<li><p>如果用户按“返回”按钮，则当前 Activity 会从堆栈弹出并被销毁。 堆栈中的前一个 Activity 恢复执行。销毁 Activity 时，系统不会保留该 Activity 的状态。</p>
+</li>
+<li><p>即使来自其他任务，Activity 也可以多次实例化。</p>
+</li>
+</ul>
+<h2 id="保存-Activity-状态"><a href="#保存-Activity-状态" class="headerlink" title="保存 Activity 状态"></a>保存 Activity 状态</h2><hr>
+<p>正如上文所述，当 Activity 停止时，系统的默认行为会保留其状态。 这样一来，当用户导航回到上一个 Activity 时，其用户界面与用户离开时一样。 但是，在 Activity 被销毁且必须重建时，您可以而且应当主动使用回调方法保留 Activity 的状态。</p>
+<p>系统停止您的一个 Activity 时（例如，新 Activity 启动或任务转到前台），如果系统需要回收系统内存资源，则可能会完全销毁该 Activity。 发生这种情况时，有关该 Activity 状态的信息将会丢失。如果发生这种情况，系统仍会知道该 Activity 存在于返回栈中，但是当该 Activity 被置于堆栈顶部时，系统一定会重建 Activity（而不是恢复 Activity）。 为了避免用户的工作丢失，您应主动通过在 Activity 中实现 onSaveInstanceState() 回调方法来保留工作。</p>
+<h2 id="管理任务"><a href="#管理任务" class="headerlink" title="管理任务"></a>管理任务</h2><p>Android 管理任务和返回栈的方式（如上所述，即：将所有连续启动的 Activity 放入同一任务和“后进先出”堆栈中）非常适用于大多数应用，而您不必担心 Activity 如何与任务关联或者如何存在于返回栈中。 但是，您可能会决定要中断正常行为。 也许您希望应用中的 Activity 在启动时开始新任务（而不是放置在当前任务中）；或者，当启动 Activity 时，您希望将其现有实例上移一层（而不是在返回栈的顶部创建新实例）；或者，您希望在用户离开任务时，清除返回栈中除根 Activity 以外的所有其他 Activity。</p>
+<p>通过使用 <font color="#1B9CE2"><code>&lt;activity&gt;</code></font>清单文件元素中的属性和传递给 <font color="#1B9CE2"> <code>startActivity()</code> </font> 的 Intent 中的标志，您可以执行所有这些操作以及其他操作。</p>
+<p>在这一方面，您可以使用的主要<font color="#1B9CE2"> <code>&lt;activity&gt;</code> </font> 属性包括：</p>
+<ol>
+<li><font color="#1B9CE2">taskAffinity</font>
+</li>
+<li><font color="#1B9CE2">launchMode</font>
+</li>
+<li><font color="#1B9CE2">allowTaskReparenting</font>
+</li>
+<li><font color="#1B9CE2">clearTaskOnLaunch</font>
+</li>
+<li><font color="#1B9CE2">alwaysRetainTaskState</font>
+</li>
+<li><font color="#1B9CE2">finishOnTaskLaunch</font>
+
+</li>
+</ol>
+<p>您可以使用的主要 <code>Intent</code> 标志包括：</p>
+<ol>
+<li><font color="#1B9CE2">FLAG_ACTIVITY_NEW_TASK</font>
+</li>
+<li><font color="#1B9CE2">FLAG_ACTIVITY_CLEAR_TOP</font>
+</li>
+<li><font color="#1B9CE2">FLAG_ACTIVITY_SINGLE_TOP</font>
+
+</li>
+</ol>
+<p>在下文中，您将了解如何使用这些清单文件属性和 Intent 标志定义 Activity 与任务的关联方式，以及 Activity 在返回栈中的行为方式。</p>
+<blockquote>
+<p>注意：大多数应用都不得中断 Activity 和任务的默认行为： 如果确定您的 Activity 必须修改默认行为，当使用“返回”按钮从其他 Activity 和任务导航回到该 Activity 时，请务必要谨慎并确保在启动期间测试该 Activity 的可用性。请确保测试导航行为是否有可能与用户的预期行为冲突。</p>
+</blockquote>
+<h2 id="定义启动模式"><a href="#定义启动模式" class="headerlink" title="定义启动模式"></a>定义启动模式</h2><hr>
+<p>启动模式允许您定义 Activity 的新实例如何与当前任务关联。 您可以通过两种方法定义不同的启动模式：</p>
+<p><font color="#1B9CE2">使用清单文件</font><br><br>在清单文件中声明 Activity 时，您可以指定 Activity 在启动时应该如何与任务关联。</p>
+<p><font color="#1B9CE2">使用 <code>Intent</code> 标志 </font><br><br>调用 startActivity() 时，可以在 Intent 中加入一个标志，用于声明新 Activity 如何（或是否）与当前任务关联。<br>因此，如果 Activity A 启动 Activity B，则 Activity B 可以在其清单文件中定义它应该如何与当前任务关联（如果可能），并且 Activity A 还可以请求 Activity B 应该如何与当前任务关联。如果这两个 Activity 均定义 Activity B 应该如何与任务关联，则 Activity A 的请求（如 Intent 中所定义）优先级要高于 Activity B 的请求（如其清单文件中所定义）。</p>
+<blockquote>
+<p>注：某些适用于清单文件的启动模式不可用作 Intent 标志，同样，某些可用作 Intent 标志的启动模式无法在清单文件中定义。</p>
+</blockquote>
+<h3 id="使用清单文件"><a href="#使用清单文件" class="headerlink" title="使用清单文件"></a>使用清单文件</h3><p>在清单文件中声明 <code>Activity</code> 时，您可以使用 <code>&lt;activity&gt;</code> 元素的 launchMode 属性指定 <code>Activity</code> 应该如何与任务关联。</p>
+<p><code>launchMode</code> 属性指定有关应如何将 <code>Activity</code> 启动到任务中的指令。您可以分配给 <code>launchMode</code> 属性的启动模式共有四种：</p>
+<ul>
+<li><p>“standard”（默认模式）<br>默认。系统在启动 <code>Activity</code> 的任务中创建 <code>Activity</code> 的新实例并向其传送 <code>Intent</code>。<code>Activity</code> 可以多次实例化，而每个实例均可属于不同的任务，并且一个任务可以拥有多个实例。</p>
+</li>
+<li><p>“singleTop”<br>如果当前任务的顶部已存在 <code>Activity</code> 的一个实例，则系统会通过调用该实例的 <code>onNewIntent()</code> 方法向其传送 <code>Intent</code>，而不是创建 <code>Activity</code> 的新实例。<code>Activity</code> 可以多次实例化，而每个实例均可属于不同的任务，并且一个任务可以拥有多个实例（但前提是位于返回栈顶部的 <code>Activity</code> 并不是 <code>Activity</code> 的现有实例）。<br>例如，假设任务的返回栈包含根 <code>Activity</code> A 以及 <code>Activity</code> B、C 和位于顶部的 D（堆栈是 A-B-C-D；D 位于顶部）。收到针对 D 类 <code>Activity</code> 的 <code>Intent</code>。如果 D 具有默认的 “standard” 启动模式，则会启动该类的新实例，且堆栈会变成 A-B-C-D-D。但是，如果 D 的启动模式是 “singleTop”，则 D 的现有实例会通过 <code>onNewIntent()</code> 接收 <code>Intent</code>，因为它位于堆栈的顶部；而堆栈仍为 A-B-C-D。但是，如果收到针对 B 类 <code>Activity</code> 的 <code>Intent</code>，则会向堆栈添加 B 的新实例，即便其启动模式为 “singleTop” 也是如此。</p>
+<blockquote>
+<p>注：为某个 <code>Activity</code> 创建新实例时，用户可以按“返回”按钮返回到前一个 <code>Activity</code>。 但是，当 Activity 的现有实例处理新 <code>Intent</code> 时，则在新 <code>Intent</code> 到达 <code>onNewIntent()</code> 之前，用户无法按“返回”按钮返回到 <code>Activity</code> 的状态。</p>
+</blockquote>
+</li>
+<li><p><code>&quot;singleTask&quot;</code><br>系统创建新任务并实例化位于新任务底部的 <code>Activity</code>。但是，如果该 <code>Activity</code> 的一个实例已存在于一个单独的任务中，则系统会通过调用现有实例的 <code>onNewIntent()</code> 方法向其传送 <code>Intent</code>，而不是创建新实例。一次只能存在 <code>Activity</code> 的一个实例。<br>注：尽管 <code>Activity</code> 在新任务中启动，但是用户按“返回”按钮仍会返回到前一个 <code>Activity</code>。</p>
+</li>
+<li><p>“singleInstance”.<br>与 “singleTask” 相同，只是系统不会将任何其他 <code>Activity</code> 启动到包含实例的任务中。该 Activity 始终是其任务唯一仅有的成员；由此 Activity 启动的任何 Activity 均在单独的任务中打开。<br>我们再来看另一示例，<code>Android</code> 浏览器应用声明网络浏览器 <code>Activity</code> 应始终在其自己的任务中打开（通过在 <code>&lt;activity&gt;</code> 元素中指定 <code>singleTask</code> 启动模式）。这意味着，如果您的应用发出打开 <code>Android</code> 浏览器的 <code>Intent</code>，则其 <code>Activity</code> 与您的应用位于不同的任务中。相反，系统会为浏览器启动新任务，或者如果浏览器已有任务正在后台运行，则会将该任务上移一层以处理新 <code>Intent</code>。</p>
+</li>
+</ul>
+<p>无论 <code>Activity</code> 是在新任务中启动，还是在与启动 <code>Activity</code> 相同的任务中启动，用户按“返回”按钮始终会转到前一个 <code>Activity</code>。 但是，如果启动指定 <code>singleTask</code> 启动模式的 Activity，则当某后台任务中存在该 <code>Activity</code> 的实例时，整个任务都会转移到前台。此时，返回栈包括上移到堆栈顶部的任务中的所有 <code>Activity</code>。 下图显示了这种情况。</p>
+<p><img src="http://img.blog.csdn.net/20170613144916213?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvd21zMTk5MzExMjc1MzE5/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt="这里写图片描述"></p>
+<h3 id="使用-Intent-标志"><a href="#使用-Intent-标志" class="headerlink" title="使用 Intent 标志"></a>使用 Intent 标志</h3><p>启动 <code>Activity</code> 时，您可以通过在传递给 <code>startActivity()</code> 的 <code>Intent</code> 中加入相应的标志，修改 <code>Activity</code> 与其任务的默认关联方式。可用于修改默认行为的标志包括：</p>
+<ul>
+<li><p>FLAG_ACTIVITY_NEW_TASK<br>在新任务中启动 <code>Activity</code>。如果已为正在启动的 <code>Activity</code>运行任务，则该任务会转到前台并恢复其最后状态，同时 <code>Activity</code> 会在 <code>onNewIntent()</code> 中收到新 <code>Intent</code>。<br>正如前文所述，这会产生与 “singleTask” launchMode 值相同的行为。</p>
+</li>
+<li><p>FLAG_ACTIVITY_SINGLE_TOP<br>如果正在启动的 <code>Activity</code> 是当前 <code>Activity</code>（位于返回栈的顶部），则 现有实例会接收对 onNewIntent() 的调用，而不是创建 <code>Activity</code> 的新实例。<br>正如前文所述，这会产生与 “singleTop”launchMode 值相同的行为。</p>
+</li>
+<li><p>FLAG_ACTIVITY_CLEAR_TOP<br>如果正在启动的 <code>Activity</code> 已在当前任务中运行，则会销毁当前任务顶部的所有 <code>Activity</code>，并通过 <code>onNewIntent()</code> 将此 <code>Intent</code> 传递给 <code>Activity</code> 已恢复的实例（现在位于顶部），而不是启动该 <code>Activity</code> 的新实例。<br>产生这种行为的 <code>launchMode</code> 属性没有值。</p>
+</li>
+<li><p>FLAG_ACTIVITY_CLEAR_TOP 通常与 FLAG_ACTIVITY_NEW_TASK 结合使用。一起使用时，通过这些标志，可以找到其他任务中的现有 <code>Activity</code>，并将其放入可从中响应 <code>Intent</code> 的位置。</p>
+<blockquote>
+<p>注：如果指定 <code>Activity</code> 的启动模式为 “standard”，则该 <code>Activity</code> 也会从堆栈中移除，并在其位置启动一个新实例，以便处理传入的 <code>Intent</code>。 这是因为当启动模式为 “standard” 时，将始终为新 <code>Intent</code> 创建新实例。</p>
+</blockquote>
+</li>
+</ul>
+<h3 id="处理关联"><a href="#处理关联" class="headerlink" title="处理关联"></a>处理关联</h3><p>“关联”指示 <code>Activity</code> 优先属于哪个任务。默认情况下，同一应用中的所有 <code>Activity</code> 彼此关联。 因此，默认情况下，同一应用中的所有 <code>Activity</code> 优先位于相同任务中。 不过，您可以修改 <code>Activity</code> 的默认关联。 在不同应用中定义的 <code>Activity</code> 可以共享关联，或者可为在同一应用中定义的 <code>Activity</code> 分配不同的任务关联。</p>
+<p>可以使用 <code>&lt;activity&gt;</code> 元素的 <code>taskAffinity</code> 属性修改任何给定 <code>Activity</code> 的关联。</p>
+<p><code>taskAffinity</code> 属性取字符串值，该值必须不同于在 <code>&lt;manifest&gt;</code> 元素中声明的默认软件包名称，因为系统使用该名称标识应用的默认任务关联。</p>
+<p>在两种情况下，关联会起作用：</p>
+<ul>
+<li><p>启动 <code>Activity</code> 的 <code>Intent</code> 包含 <code>FLAG_ACTIVITY_NEW_TASK</code> 标志。<br>默认情况下，新 <code>Activity</code> 会启动到调用 <code>startActivity()</code> 的 <code>Activity</code> 任务中。它将推入与调用方相同的返回栈。 但是，如果传递给 <code>startActivity()</code> 的 <code>Intent</code> 包含 <code>FLAG_ACTIVITY_NEW_TASK</code> 标志，则系统会寻找其他任务来储存新 <code>Activity</code>。这通常是新任务，但未做强制要求。 如果现有任务与新 <code>Activity</code> 具有相同关联，则会将 <code>Activity</code> 启动到该任务中。 否则，将开始新任务。<br>如果此标志导致 <code>Activity</code> 开始新任务，且用户按“主页”按钮离开，则必须为用户提供导航回任务的方式。 有些实体（如通知管理器）始终在外部任务中启动 <code>Activity</code>，而从不作为其自身的一部分启动 <code>Activity</code>，因此它们始终将 <code>FLAG_ACTIVITY_NEW_TASK</code> 放入传递给 <code>startActivity()</code> 的 <code>Intent</code> 中。请注意，如果 <code>Activity</code> 能够由可以使用此标志的外部实体调用，则用户可以通过独立方式返回到启动的任务，例如，使用启动器图标（任务的根 <code>Activity</code> 具有 <code>CATEGORY_LAUNCHER</code> <code>Intent</code> 过滤器；请参阅下面的启动任务部分）。</p>
+</li>
+<li><p><code>Activity</code> 将其 <code>allowTaskReparenting</code> 属性设置为 “true”。<br>在这种情况下，<code>Activity</code> 可以从其启动的任务移动到与其具有关联的任务（如果该任务出现在前台）。<br>例如，假设将报告所选城市天气状况的 <code>Activity</code> 定义为旅行应用的一部分。 它与同一应用中的其他 <code>Activity</code> 具有相同的关联（默认应用关联），并允许利用此属性重定父级。当您的一个 Activity 启动天气预报 Activity 时，它最初所属的任务与您的 Activity 相同。 但是，当旅行应用的任务出现在前台时，系统会将天气预报 Activity 重新分配给该任务并显示在其中。</p>
+<blockquote>
+<p>提示：如果从用户的角度来看，一个 .apk 文件包含多个“应用”，则您可能需要使用 taskAffinity 属性将不同关联分配给与每个“应用”相关的 Activity。</p>
+</blockquote>
+</li>
+</ul>
+<h3 id="清理返回栈"><a href="#清理返回栈" class="headerlink" title="清理返回栈"></a>清理返回栈</h3><p>如果用户长时间离开任务，则系统会清除所有 <code>Activity</code> 的任务，根 <code>Activity</code> 除外。 当用户再次返回到任务时，仅恢复根 <code>Activity</code>。系统这样做的原因是，经过很长一段时间后，用户可能已经放弃之前执行的操作，返回到任务是要开始执行新的操作。</p>
+<p>您可以使用下列几个 <code>Activity</code> 属性修改此行为：</p>
+<ul>
+<li><p><font color="#1B9CE2">alwaysRetainTaskState</font><br>如果在任务的根 <code>Activity</code> 中将此属性设置为 “true”，则不会发生刚才所述的默认行为。即使在很长一段时间后，任务仍将所有 <code>Activity</code> 保留在其堆栈中。</p>
+</li>
+<li><p><font color="#1B9CE2">clearTaskOnLaunch</font><br>如果在任务的根 <code>Activity</code> 中将此属性设置为 “true”，则每当用户离开任务然后返回时，系统都会将堆栈清除到只剩下根 <code>Activity</code>。 换而言之，它与 <font color="#1B9CE2">alwaysRetainTaskState</font> 正好相反。 即使只离开任务片刻时间，用户也始终会返回到任务的初始状态。</p>
+</li>
+<li><p><font color="#1B9CE2">finishOnTaskLaunch</font><br>此属性类似于 <code>clearTaskOnLaunch</code>，但它对单个 <code>Activity</code> 起作用，而非整个任务。 此外，它还有可能会导致任何 Activity 停止，包括根 <code>Activity</code>。 设置为 “true” 时，<code>Activity</code> 仍是任务的一部分，但是仅限于当前会话。如果用户离开然后返回任务，则任务将不复存在。</p>
+</li>
+</ul>
+<h3 id="启动任务"><a href="#启动任务" class="headerlink" title="启动任务"></a>启动任务</h3><p>通过为 Activity 提供一个以 “android.intent.action.MAIN” 为指定操作、以 “android.intent.category.LAUNCHER” 为指定类别的 Intent 过滤器，您可以将 Activity 设置为任务的入口点。 例如：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&lt;activity ... &gt;</span><br><span class="line">    &lt;intent-filter ... &gt;</span><br><span class="line">        &lt;action android:name=&quot;android.intent.action.MAIN&quot; /&gt;</span><br><span class="line">        &lt;category android:name=&quot;android.intent.category.LAUNCHER&quot; /&gt;</span><br><span class="line">    &lt;/intent-filter&gt;</span><br><span class="line">    ...</span><br><span class="line">&lt;/activity&gt;</span><br></pre></td></tr></table></figure>
+<p>此类 Intent 过滤器会使 Activity 的图标和标签显示在应用启动器中，让用户能够启动 Activity 并在启动之后随时返回到创建的任务中。</p>
+<p>第二个功能非常重要：用户必须能够在离开任务后，再使用此 Activity 启动器返回该任务。 因此，只有在 Activity 具有 ACTION_MAIN 和 CATEGORY_LAUNCHER 过滤器时，才应该使用将 Activity 标记为“始终启动任务”的两种启动模式，即 “singleTask” 和 “singleInstance”。例如，我们可以想像一下如果缺少过滤器会发生什么情况： Intent 启动一个 “singleTask” Activity，从而启动一个新任务，并且用户花了些时间处理该任务。然后，用户按“主页”按钮。 任务现已发送到后台，而且不可见。现在，用户无法返回到任务，因为该任务未显示在应用启动器中。</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/12/15/Android中蓝牙开发-1/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="wms1993">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="王梦思的个人博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/12/15/Android中蓝牙开发-1/" itemprop="url">Android中蓝牙开发</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posté le</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-12-15T19:13:10+08:00">
+                2017-12-15
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="Android中蓝牙开发"><a href="#Android中蓝牙开发" class="headerlink" title="Android中蓝牙开发"></a>Android中蓝牙开发</h1><blockquote>
+<p>Android 平台包含蓝牙网络堆栈支持，凭借此项支持，设备能以无线方式与其他蓝牙设备交换数据。应用框架提供了通过 Android Bluetooth API 访问蓝牙功能的途径。 这些 API 允许应用以无线方式连接到其他蓝牙设备，从而实现点到点和多点无线功能。</p>
+</blockquote>
+<p>使用 Bluetooth API，Android 应用可执行以下操作：</p>
+<ul>
+<li>扫描其他蓝牙设备</li>
+<li>查询本地蓝牙适配器的配对蓝牙设备</li>
+<li>建立 RFCOMM 通道</li>
+<li>通过服务发现连接到其他设备</li>
+<li>与其他设备进行双向数据传输</li>
+<li>管理多个连接</li>
+</ul>
+<p>本文将介绍如何使用传统蓝牙。传统蓝牙适用于电池使用强度较大的操作，例如 Android 设备之间的流式传输和通信等。 针对具有低功耗要求的蓝牙设备，Android 4.3（API 级别 18）中引入了面向低功耗蓝牙的 API 支持。</p>
+<h2 id="基础知识"><a href="#基础知识" class="headerlink" title="基础知识"></a>基础知识</h2><hr>
+<p>本文将介绍如何使用 Android Bluetooth API 来完成使用蓝牙进行通信的四项主要任务：设置蓝牙、查找局部区域内的配对设备或可用设备、连接设备，以及在设备之间传输数据。</p>
+<p>android.bluetooth 包中提供了所有 Bluetooth API。 下面概要列出了创建蓝牙连接所需的类和接口：</p>
+<h5 id="1-BluetoothAdapter"><a href="#1-BluetoothAdapter" class="headerlink" title="1. BluetoothAdapter"></a>1. <font color="blue">BluetoothAdapter</font></h5><blockquote>
+<p>表示本地蓝牙适配器（蓝牙无线装置）。 BluetoothAdapter 是所有蓝牙交互的入口点。 利用它可以发现其他蓝牙设备，查询绑定（配对）设备的列表，使用已知的 MAC 地址实例化 BluetoothDevice，以及创建 BluetoothServerSocket 以侦听来自其他设备的通信。</p>
+</blockquote>
+<h5 id="2-BluetoothAdapter"><a href="#2-BluetoothAdapter" class="headerlink" title="2. BluetoothAdapter"></a>2. <font color="blue">BluetoothAdapter</font></h5><blockquote>
+<p>表示远程蓝牙设备。利用它可以通过 BluetoothSocket 请求与某个远程设备建立连接，或查询有关该设备的信息，例如设备的名称、地址、类和绑定状态等。</p>
+</blockquote>
+<h5 id="3-BluetoothSocket"><a href="#3-BluetoothSocket" class="headerlink" title="3. BluetoothSocket"></a>3. <font color="blue">BluetoothSocket</font></h5><blockquote>
+<p>表示蓝牙套接字接口（与 TCP Socket 相似）。这是允许应用通过 InputStream 和 OutputStream 与其他蓝牙设备交换数据的连接点。</p>
+</blockquote>
+<h5 id="4-BluetoothServerSocket"><a href="#4-BluetoothServerSocket" class="headerlink" title="4. BluetoothServerSocket"></a>4. <font color="blue">BluetoothServerSocket</font></h5><blockquote>
+<p>表示用于侦听传入请求的开放服务器套接字（类似于 TCP ServerSocket）。 要连接两台 Android 设备，其中一台设备必须使用此类开放一个服务器套接字。 当一台远程蓝牙设备向此设备发出连接请求时， BluetoothServerSocket 将会在接受连接后返回已连接的 BluetoothSocket。</p>
+</blockquote>
+<h5 id="5-BluetoothClass"><a href="#5-BluetoothClass" class="headerlink" title="5. BluetoothClass"></a>5. <font color="blue">BluetoothClass</font></h5><blockquote>
+<p>描述蓝牙设备的一般特征和功能。 这是一组只读属性，用于定义设备的主要和次要设备类及其服务。 不过，它不能可靠地描述设备支持的所有蓝牙配置文件和服务，而是适合作为设备类型提示。</p>
+</blockquote>
+<h5 id="6-BluetoothProfile"><a href="#6-BluetoothProfile" class="headerlink" title="6. BluetoothProfile"></a>6. <font color="blue">BluetoothProfile</font></h5><blockquote>
+<p>表示蓝牙配置文件的接口。 蓝牙配置文件是适用于设备间蓝牙通信的无线接口规范。</p>
+</blockquote>
+<h5 id="7-BluetoothHeadset"><a href="#7-BluetoothHeadset" class="headerlink" title="7. BluetoothHeadset"></a>7. <font color="blue">BluetoothHeadset</font></h5><blockquote>
+<p>提供蓝牙耳机支持，以便与手机配合使用。 其中包括蓝牙耳机和免提（1.5 版）配置文件。</p>
+</blockquote>
+<h5 id="8-BluetoothA2dp"><a href="#8-BluetoothA2dp" class="headerlink" title="8. BluetoothA2dp"></a>8. <font color="blue">BluetoothA2dp</font></h5><blockquote>
+<p>定义高质量音频如何通过蓝牙连接和流式传输，从一台设备传输到另一台设备。“A2DP”代表高级音频分发配置文件。</p>
+</blockquote>
+<h5 id="9-BluetoothHealth"><a href="#9-BluetoothHealth" class="headerlink" title="9. BluetoothHealth"></a>9. <font color="blue">BluetoothHealth</font></h5><blockquote>
+<p>表示用于控制蓝牙服务的健康设备配置文件代理。</p>
+</blockquote>
+<h5 id="10-BluetoothHealthCallback"><a href="#10-BluetoothHealthCallback" class="headerlink" title="10. BluetoothHealthCallback"></a>10. <font color="blue">BluetoothHealthCallback</font></h5><blockquote>
+<p>用于实现 BluetoothHealth 回调的抽象类。您必须扩展此类并实现回调方法，以接收关于应用注册状态和蓝牙通道状态变化的更新内容。</p>
+</blockquote>
+<h5 id="11-BluetoothHealthAppConfiguration"><a href="#11-BluetoothHealthAppConfiguration" class="headerlink" title="11. BluetoothHealthAppConfiguration"></a>11. <font color="blue">BluetoothHealthAppConfiguration</font></h5><blockquote>
+<p>表示第三方蓝牙健康应用注册的应用配置，以便与远程蓝牙健康设备通信。</p>
+</blockquote>
+<h5 id="12-BluetoothProfile-ServiceListener"><a href="#12-BluetoothProfile-ServiceListener" class="headerlink" title="12. BluetoothProfile.ServiceListener"></a>12. <font color="blue">BluetoothProfile.ServiceListener</font></h5><blockquote>
+<p>在 BluetoothProfile IPC 客户端连接到服务（即，运行特定配置文件的内部服务）或断开服务连接时向其发送通知的接口。</p>
+</blockquote>
+<h2 id="蓝牙权限"><a href="#蓝牙权限" class="headerlink" title="蓝牙权限"></a>蓝牙权限</h2><hr>
+<p>要在应用中使用蓝牙功能，必须声明蓝牙权限 BLUETOOTH。您需要此权限才能执行任何蓝牙通信，例如请求连接、接受连接和传输数据等。</p>
+<p>如果您希望您的应用启动设备发现或操作蓝牙设置，则还必须声明 BLUETOOTH_ADMIN 权限。 大多数应用需要此权限仅仅为了能够发现本地蓝牙设备。 除非该应用是将要应用户请求修改蓝牙设置的“超级管理员”，否则不应使用此权限所授予的其他能力。 注：如果要使用 BLUETOOTH_ADMIN 权限，则还必须拥有 BLUETOOTH 权限。</p>
+<p>在您的AndroidMenifest.xml中声明蓝牙权限。例如：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;manifest&gt;</span><br><span class="line">	...</span><br><span class="line">	&lt;uses-permission android:name=&quot;android.permission.BLUETOOTH&quot; /&gt;</span><br><span class="line">	...</span><br><span class="line">&lt;/manifest&gt;</span><br></pre></td></tr></table></figure></p>
+<h2 id="设置蓝牙"><a href="#设置蓝牙" class="headerlink" title="设置蓝牙"></a>设置蓝牙</h2><hr>
+<p>您需要验证设备支持蓝牙，并且如果支持确保将其启用，然后您的应用才能通过蓝牙进行通信。</p>
+<p>如果不支持蓝牙，则应正常停用任何蓝牙功能。 如果支持蓝牙但已停用此功能，则可以请求用户在不离开应用的同时启用蓝牙。 可使用 BluetoothAdapter，分两步完成此设置：</p>
+<ol>
+<li>获取 BluetoothAdapter<blockquote>
+<p>所有蓝牙 Activity 都需要 BluetoothAdapter。 要获取 BluetoothAdapter，请调用静态 getDefaultAdapter() 方法。这将返回一个表示设备自身的蓝牙适配器（蓝牙无线装置）的 BluetoothAdapter。 整个系统有一个蓝牙适配器，并且您的应用可使用此对象与之交互。 如果 getDefaultAdapter() 返回 null，则该设备不支持蓝牙，您的操作到此为止。 例如：</p>
+</blockquote>
+</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">BluetoothAdapter mBluetoothAdapter = BluetoothAdapter.getDefaultAdapter();</span><br><span class="line">if (mBluetoothAdapter == null) &#123;</span><br><span class="line">	//当返回null表示该设备不支持蓝牙</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ol>
+<li>启用蓝牙</li>
+</ol>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/12/15/什么是操作符？/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="wms1993">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="王梦思的个人博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/12/15/什么是操作符？/" itemprop="url">Non titré</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posté le</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-12-15T19:03:40+08:00">
+                2017-12-15
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>上一篇文章中我们详细介绍了RxJava的一些常见的使用方法，只是很简单的基础使用，这边文章中我们一起来学习下RxJava更高深的使用方法。</p>
+<h2 id="什么是操作符？"><a href="#什么是操作符？" class="headerlink" title="什么是操作符？"></a>什么是操作符？</h2><blockquote>
+<p>操作符是为了解决对Observable对象的变换的问题，操作符用于在Observable和最终的Subscriber之间修改Observable发出的事件。RxJava提供了很多很有用的操作符。</p>
+</blockquote>
+<p>map()操作符就是用于变换Observable对象的，map操作符返回一个Observable对象，这样就可以实现链式调用，在一个Observable对象上多次使用map操作符，最终将最简洁的数据传递给Subscriber对象。</p>
+<p>可能这样解释大家还不是很容易理解，下面举个例子，大家就明白了。</p>
+<h2 id="怎么使用？"><a href="#怎么使用？" class="headerlink" title="怎么使用？"></a>怎么使用？</h2><p>比如我们现在有一个需求，有一个String数组，我们利用RxJava遍历的时候，我们要对数组中每个元素都转成Integer类型，这时候我们的map操作符就很有用了。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">String[] nums = new String[]&#123;&quot;1&quot;, &quot;2&quot;, &quot;3&quot;&#125;;</span><br><span class="line">        Observable.from(nums).map(new Func1&lt;String, Integer&gt;() &#123;</span><br><span class="line">            @Override</span><br><span class="line">            public Integer call(String s) &#123;</span><br><span class="line">                return Integer.parseInt(s);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;).subscribe(new Subscriber&lt;Integer&gt;() &#123;</span><br><span class="line">            @Override</span><br><span class="line">            public void onCompleted() &#123;</span><br><span class="line">                Log.e(TAG, &quot;onCompleted&quot;);</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            @Override</span><br><span class="line">            public void onError(Throwable e) &#123;</span><br><span class="line">                Log.e(TAG, &quot;onError&quot;);</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            @Override</span><br><span class="line">            public void onNext(Integer integer) &#123;</span><br><span class="line">                Log.e(TAG, &quot;onNext , integer = &quot; + integer);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;);</span><br></pre></td></tr></table></figure>
+<p>logcat如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">06-08 14:44:40.103 6775-6775/com.example.boguang.demo E/RxAndroidActivity: onNext , integer = 1</span><br><span class="line">06-08 14:44:40.103 6775-6775/com.example.boguang.demo E/RxAndroidActivity: onNext , integer = 2</span><br><span class="line">06-08 14:44:40.103 6775-6775/com.example.boguang.demo E/RxAndroidActivity: onNext , integer = 3</span><br><span class="line">06-08 14:44:40.103 6775-6775/com.example.boguang.demo E/RxAndroidActivity: onCompleted</span><br></pre></td></tr></table></figure>
+<p>分析下上面的代码：</p>
+<pre><code>1. 当我们调用 `Observable.from(nums)` 的时候，这时候返回给我们的其实是 `Observable&lt;String&gt;` 类型
+</code></pre>
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/12/15/Android中MediaRecorder详解/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="wms1993">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="王梦思的个人博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/12/15/Android中MediaRecorder详解/" itemprop="url">Android中MediaRecorder详解</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posté le</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-12-15T19:03:40+08:00">
+                2017-12-15
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="Android中MediaRecorder详解"><a href="#Android中MediaRecorder详解" class="headerlink" title="Android中MediaRecorder详解"></a>Android中MediaRecorder详解</h1><p>在Android中录制音频有两种方式，MediaRecorder和AudioRecorder。<br></p>
+<ul>
+<li>MediaRecorder相对比较简单，不需要关心中间录制过程，录制成功后可以直接得到音频文件，用音频播放器就可以直接播放。录制的音频文件是经过压缩的，需要设置编码器。</li>
+<li>AudioRecorder在声音录制过程中，可以处理采集的声音数据，如降噪、合成等。过程为一段一段进行录制然后得到数据分别进行处理。录制的是PCM格式的音频文件，需要用AudioTrack来播放，AudioTrack更接近底层。</li>
+</ul>
+<p>本文主要讲解的是MediaRecorder来录制。<br></p>
+<p>###使用MediaRecorder录制音频的常见情况如下:###</p>
+<ol>
+<li>通过<code>new MediaRecorder()</code>创建MediaRecorder实例</li>
+<li>调用    <code>setAudioSource()</code>设定音频的录入源</li>
+<li>调用<code>setOutputFormat()</code>设置输出格式</li>
+<li>调用<code>setAudioEncoder()</code>设定音频的编码方式。</li>
+<li>调用<code>setOutputFile()</code>设置输出文件路径</li>
+<li>调用<code>prepare()</code>准备录制</li>
+<li>调用<code>start()</code>开始录制</li>
+<li>调用<code>stop()</code>停止录制</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">MediaRecorder recorder = new MediaRecorder();</span><br><span class="line">recorder.setAudioSource(MediaRecorder.AudioSource.MIC);</span><br><span class="line">recorder.setOutputFormat(MediaRecorder.OutputFormat.THREE_GPP);</span><br><span class="line">recorder.setAudioEncoder(MediaRecorder.AudioEncoder.AMR_NB);</span><br><span class="line">recorder.setOutputFile(PATH_NAME);</span><br><span class="line">recorder.prepare();</span><br><span class="line">recorder.start();   // Recording is now started</span><br><span class="line">...</span><br><span class="line">recorder.stop();</span><br><span class="line">recorder.reset();</span><br><span class="line">recorder.release(); // Now the object cannot be reused</span><br></pre></td></tr></table></figure>
+<p>附一张Android官网的流程图：<br><img src="http://img.blog.csdn.net/20170606163248557?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvd21zMTk5MzExMjc1MzE5/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt="这里写图片描述"></p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/12/15/hello-world/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="wms1993">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="王梦思的个人博客">
     </span>
 
     
@@ -257,7 +1454,7 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Veröffentlicht am</span>
+                <span class="post-meta-item-text">Posté le</span>
               
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-12-15T18:14:29+08:00">
                 2017-12-15
@@ -378,7 +1575,7 @@
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
-              <p class="site-author-name" itemprop="name">John Doe</p>
+              <p class="site-author-name" itemprop="name">wms1993</p>
               <p class="site-description motion-element" itemprop="description"></p>
           </div>
 
@@ -389,8 +1586,8 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">1</span>
-                  <span class="site-state-item-name">Artikel</span>
+                  <span class="site-state-item-count">8</span>
+                  <span class="site-state-item-name">articles</span>
                 </a>
               </div>
             
@@ -436,13 +1633,13 @@
   <span class="with-love">
     <i class="fa fa-user"></i>
   </span>
-  <span class="author" itemprop="copyrightHolder">John Doe</span>
+  <span class="author" itemprop="copyrightHolder">wms1993</span>
 
   
 </div>
 
 
-  <div class="powered-by">Erstellt mit  <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
 
 
 
@@ -450,7 +1647,7 @@
 
 
 
-  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.3</div>
+  <div class="theme-info">Thème &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.3</div>
 
 
 

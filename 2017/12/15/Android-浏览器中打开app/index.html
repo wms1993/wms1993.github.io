@@ -1,0 +1,708 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.3" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.3">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.3" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="Android 浏览器中打开app我们经常看到当点击一个链接的时候，跳转到app，比如当我们在网页端浏览新闻的时候，要想查看更多评论等就会提示你跳转到app内打开查看，那是如何实现网页中打开app的呢？ ##怎么实现？  要想实现浏览器内打开app，其实我们可以看做就是打开一个链接，只是我们普通的链接都是http或者https开头的，如果要想打开app，那我么需要自定义这个schem。 首先我们来">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Android 浏览器中打开app">
+<meta property="og:url" content="http://yoursite.com/2017/12/15/Android-浏览器中打开app/index.html">
+<meta property="og:site_name" content="王梦思的个人博客">
+<meta property="og:description" content="Android 浏览器中打开app我们经常看到当点击一个链接的时候，跳转到app，比如当我们在网页端浏览新闻的时候，要想查看更多评论等就会提示你跳转到app内打开查看，那是如何实现网页中打开app的呢？ ##怎么实现？  要想实现浏览器内打开app，其实我们可以看做就是打开一个链接，只是我们普通的链接都是http或者https开头的，如果要想打开app，那我么需要自定义这个schem。 首先我们来">
+<meta property="og:image" content="http://img.blog.csdn.net/20170612094434433?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvd21zMTk5MzExMjc1MzE5/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast">
+<meta property="og:updated_time" content="2017-12-15T11:18:08.668Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Android 浏览器中打开app">
+<meta name="twitter:description" content="Android 浏览器中打开app我们经常看到当点击一个链接的时候，跳转到app，比如当我们在网页端浏览新闻的时候，要想查看更多评论等就会提示你跳转到app内打开查看，那是如何实现网页中打开app的呢？ ##怎么实现？  要想实现浏览器内打开app，其实我们可以看做就是打开一个链接，只是我们普通的链接都是http或者https开头的，如果要想打开app，那我么需要自定义这个schem。 首先我们来">
+<meta name="twitter:image" content="http://img.blog.csdn.net/20170612094434433?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvd21zMTk5MzExMjc1MzE5/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '5.1.3',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2017/12/15/Android-浏览器中打开app/"/>
+
+
+
+
+
+  <title>Android 浏览器中打开app | 王梦思的个人博客</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">王梦思的个人博客</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Accueil
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archives
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/12/15/Android-浏览器中打开app/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="wms1993">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="王梦思的个人博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Android 浏览器中打开app</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posté le</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-12-15T19:13:27+08:00">
+                2017-12-15
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="Android-浏览器中打开app"><a href="#Android-浏览器中打开app" class="headerlink" title="Android 浏览器中打开app"></a>Android 浏览器中打开app</h1><p>我们经常看到当点击一个链接的时候，跳转到app，比如当我们在网页端浏览新闻的时候，要想查看更多评论等就会提示你跳转到app内打开查看，那是如何实现网页中打开app的呢？</p>
+<p>##怎么实现？</p>
+<hr>
+<p>要想实现浏览器内打开app，其实我们可以看做就是打开一个链接，只是我们普通的链接都是http或者https开头的，如果要想打开app，那我么需要自定义这个schem。</p>
+<p>首先我们来学下下uri的组成吧</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">scheme://host:port/path?qureyParameter=queryString</span><br></pre></td></tr></table></figure>
+<p>一个uri是由上面几个部分组成的，分别是：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https://www.baidu.com/images?keyword=花儿</span><br></pre></td></tr></table></figure>
+<ol>
+<li><strong>scheme:</strong> scheme就是上面例子中的https</li>
+<li><strong>host:</strong> 在url中就是我们的域名或者ip地址(包含端口)</li>
+<li><strong>path:</strong> 主机资源的具体地址。如目录和文件名</li>
+<li><strong>params:</strong> 传递的参数</li>
+</ol>
+<p>###第一步：在AndroidManifest.xml中注册<br>html中代码很简单，就这么一行，是不是html写好了就可以打开app了呢？当然不可以，我们需要在我们的app中注册这个uri。现在来到app中，我们在AndroidManifest.xml中加入，我们在MainActivity中注册。注册代码如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">&lt;activity android:name=&quot;.MainActivity&quot;&gt;</span><br><span class="line">        &lt;intent-filter&gt;</span><br><span class="line">            &lt;action android:name=&quot;android.intent.action.MAIN&quot;/&gt;</span><br><span class="line"></span><br><span class="line">            &lt;category android:name=&quot;android.intent.category.LAUNCHER&quot;/&gt;</span><br><span class="line">        &lt;/intent-filter&gt;</span><br><span class="line"></span><br><span class="line">		 //注册scheme</span><br><span class="line">        &lt;intent-filter&gt;</span><br><span class="line">            &lt;action android:name=&quot;android.intent.action.VIEW&quot;/&gt;</span><br><span class="line">            &lt;category android:name=&quot;android.intent.category.DEFAULT&quot;/&gt;</span><br><span class="line">            &lt;category android:name=&quot;android.intent.category.BROWSABLE&quot;/&gt;</span><br><span class="line">            //这里myapp一定要和html中scheme一致。</span><br><span class="line">            &lt;data android:scheme=&quot;myapp&quot;/&gt;</span><br><span class="line">        &lt;/intent-filter&gt;</span><br><span class="line"></span><br><span class="line">&lt;/activity&gt;</span><br></pre></td></tr></table></figure>
+<p>###第二步：在网页中定义一个uri<br>所以我们可以给我们的app定义一个uri，html中代码如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;a href = &apos;myapp://wms.com/openwith?name=wms1993&amp;age=24&apos;&gt; 打开app &lt;/a&gt;</span><br></pre></td></tr></table></figure>
+<p>当我们通过浏览器打开链接的时候，就会自动打开我们的app了，不同浏览器可能提示不一样，我用uc浏览器打开就会提示如下：<br><img src="http://img.blog.csdn.net/20170612094434433?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvd21zMTk5MzExMjc1MzE5/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt="这里写图片描述"></p>
+<blockquote>
+<p>注意：这里不能直接在浏览器地址栏中直接输入我们的url，这样的话浏览器默认会给我们的url加上http，那么就无法打开应用了，最好是嵌在网页中。</p>
+</blockquote>
+<p>##怎么传值<br>经过上面两个步骤，我们就可以简单实现通过浏览器打开app了。现在我们要讲的是怎么给我们的应用传值呢？我们知道，在http传输的时候，有get请求和post请求，当然这种情况下我们只能通过get请求的方式传值，get方式传值就是把值放在url的后面，如上面例子中，我们传递了两个值</p>
+<ol>
+<li>name = wms1993</li>
+<li>age = 24</li>
+</ol>
+<p>对于网页中我们和普通的http没啥区别，现在关键在我们app端，该怎么接收值呢？看下代码：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line"> * create by wms1993</span><br><span class="line"> */</span><br><span class="line">public class MainActivity extends AppCompatActivity &#123;</span><br><span class="line"></span><br><span class="line">    private static final String TAG = &quot;MainActivity&quot;;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    protected void onCreate(Bundle savedInstanceState) &#123;</span><br><span class="line">        super.onCreate(savedInstanceState);</span><br><span class="line">        setContentView(R.layout.activity_main);</span><br><span class="line"></span><br><span class="line">        if (getIntent().getAction().equals(Intent.ACTION_VIEW)) &#123;</span><br><span class="line">            //通过浏览器打开</span><br><span class="line">            Uri uri = getIntent().getData();</span><br><span class="line">            String name = uri.getQueryParameter(&quot;name&quot;);</span><br><span class="line">            String age = uri.getQueryParameter(&quot;age&quot;);</span><br><span class="line">            Log.e(TAG, &quot;onCreate: name = &quot; + name);</span><br><span class="line">            Log.e(TAG, &quot;onCreate: age = &quot; + age);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>logcat如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">06-12 09:57:43.064 12399-12399/bluetooth.wms.com.openappbybrowser E/MainActivity: onCreate: name = wms1993</span><br><span class="line">06-12 09:57:43.065 12399-12399/bluetooth.wms.com.openappbybrowser E/MainActivity: onCreate: age = 24</span><br></pre></td></tr></table></figure>
+<p>当我们打开app的时候，会调用onCreate方法，这里我们看看getIntent的Action是不是ACTION_VIEW，如果是那么是从浏览器中打开的。</p>
+<h2 id="一些问题"><a href="#一些问题" class="headerlink" title="一些问题"></a>一些问题</h2><p>经过上面的步骤，我们实现了浏览器打开app以及给app传值的操作，那么是不是就这样结束了呢？当然不是，这里面还有一些小问题，加入我们app是一个新闻类的app，当我们通过网页浏览新闻的时候，然后点击了新闻详情，里面有一个提示在app内查看的时候，这种情况会有如下问题：</p>
+<ol>
+<li>当我们新闻app是已经打开的时候，我们从浏览器过来，当按下返回键的时候，是否能回到之前打开的界面？</li>
+<li>当我们的新闻app没有打开时，我们从浏览器过来，当按下返回键的时候，我们想回到新闻首页而不是回到上一个应用程序，我们该怎么做？</li>
+</ol>
+<p>先来看下默认情况下是Android是如何操作的,我们现在通过浏览器打开app（app之前没打开），这时候我们按下Home键，然后进入，这时候会发生什么事？现在MainActivity.java中onCreate方法加上打印。当我们通过浏览器打开app，日志如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">06-12 10:17:07.738 16021-16021/bluetooth.wms.com.openappbybrowser E/MainActivity: onCreate...</span><br><span class="line">06-12 10:17:07.738 16021-16021/bluetooth.wms.com.openappbybrowser E/MainActivity: onCreate: name = wms1993</span><br><span class="line">06-12 10:17:07.738 16021-16021/bluetooth.wms.com.openappbybrowser E/MainActivity: onCreate: age = 24</span><br></pre></td></tr></table></figure>
+<p>当按下Home键返回桌面的时候，我们在点击桌面图标打开app，这时候日志如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">06-12 10:17:59.518 16021-16021/bluetooth.wms.com.openappbybrowser E/MainActivity: onCreate...</span><br></pre></td></tr></table></figure>
+<p>通过日志可以看出，这时候应用重新创建了。<br>默认情况下，浏览器唤起的页面按返回键是回不到之前打开的界面的，那么这是为啥呢？</p>
+<p>首先大家应该了解下启动模式，我以前博客中有一篇关于启动模式的文章，<a href="http://blog.csdn.net/wms199311275319/article/details/72722747" target="_blank" rel="noopener">Activity 启动模式</a> ,下面我们简单介绍下任务栈的概念。默认情况下，如果没有对 <code>Activity</code> 设置 <code>TaskAffinity</code> 属性，一个应用的所有 <code>Activity</code> 都是运行在同一个任务栈的，任务栈的名称为应用的 <code>PackageName</code>。如果从应用A启动应用B的某个 <code>Activity</code> C，则 C 会运行在 A 的任务栈中。说到这里，相信大家应该明白为啥了吧。</p>
+<p>当我们从Launcher启动app时，app运行在Launcher的任务栈中，从浏览器中打开app则运行在浏览器任务栈中，那如何解决这个问题呢？</p>
+<p>由于从桌面点击应用会创建自己的应用栈，那么如果我们可以把浏览器任务栈中的界面移动到应用本身的任务栈中。那么怎么将 <code>Activity</code> 从其他任务栈中移到自己的任务栈中呢？方法很简单，只需要在相应的 <code>Activity</code> 中配置 <code>allowTaskReparenting</code> 属性 为 <code>true</code> 即可。但是有时候我们可能不光要将一个 Activity 移过来，有时候我们需要将整个应用移动过来，这时候我们可以将<code>allowTaskReparenting</code> 添加到<code>application</code> 上，代码如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">&lt;application</span><br><span class="line">        android:allowBackup=&quot;true&quot;</span><br><span class="line">        android:icon=&quot;@mipmap/ic_launcher&quot;</span><br><span class="line">        android:label=&quot;@string/app_name&quot;</span><br><span class="line">        android:roundIcon=&quot;@mipmap/ic_launcher_round&quot;</span><br><span class="line">        //如果想将整个应用都移动到则在这里添加</span><br><span class="line">        android:allowTaskReparenting=&quot;true&quot;</span><br><span class="line">        android:theme=&quot;@style/AppTheme&quot;&gt;</span><br><span class="line">        &lt;activity</span><br><span class="line">       	  //如果只想移动某个Activity到则在这里添加</span><br><span class="line">       	  android:allowTaskReparenting=&quot;true&quot;</span><br><span class="line">            android:name=&quot;.MainActivity&quot;&gt;</span><br><span class="line">            &lt;intent-filter&gt;</span><br><span class="line">                &lt;action android:name=&quot;android.intent.action.MAIN&quot;/&gt;</span><br><span class="line"></span><br><span class="line">                &lt;category android:name=&quot;android.intent.category.LAUNCHER&quot;/&gt;</span><br><span class="line">            &lt;/intent-filter&gt;</span><br><span class="line"></span><br><span class="line">            &lt;intent-filter&gt;</span><br><span class="line">                &lt;action android:name=&quot;android.intent.action.VIEW&quot;/&gt;</span><br><span class="line"></span><br><span class="line">                &lt;category android:name=&quot;android.intent.category.DEFAULT&quot;/&gt;</span><br><span class="line">                &lt;category android:name=&quot;android.intent.category.BROWSABLE&quot;/&gt;</span><br><span class="line"></span><br><span class="line">                &lt;data android:scheme=&quot;myapp&quot;/&gt;</span><br><span class="line">            &lt;/intent-filter&gt;</span><br><span class="line"></span><br><span class="line">        &lt;/activity&gt;</span><br><span class="line"></span><br><span class="line">        &lt;activity android:name=&quot;.PageDetailActivity&quot;/&gt;</span><br><span class="line">&lt;/application&gt;</span><br></pre></td></tr></table></figure>
+<p>这样这个问题就解决了。</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/12/15/Android-任务栈/" rel="next" title="Android 任务栈">
+                <i class="fa fa-chevron-left"></i> Android 任务栈
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/12/15/Android-5-0过渡动画Transition/" rel="prev" title="Android 5.0过渡动画Transition">
+                Android 5.0过渡动画Transition <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table Des Matières
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Ensemble
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">wms1993</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">8</span>
+                  <span class="site-state-item-name">articles</span>
+                </a>
+              </div>
+            
+
+            
+
+            
+
+          </nav>
+
+          
+
+          <div class="links-of-author motion-element">
+            
+          </div>
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Android-浏览器中打开app"><span class="nav-number">1.</span> <span class="nav-text"><a href="#Android-&#x6D4F;&#x89C8;&#x5668;&#x4E2D;&#x6253;&#x5F00;app" class="headerlink" title="Android &#x6D4F;&#x89C8;&#x5668;&#x4E2D;&#x6253;&#x5F00;app"></a>Android &#x6D4F;&#x89C8;&#x5668;&#x4E2D;&#x6253;&#x5F00;app</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#一些问题"><span class="nav-number">1.1.</span> <span class="nav-text"><a href="#&#x4E00;&#x4E9B;&#x95EE;&#x9898;" class="headerlink" title="&#x4E00;&#x4E9B;&#x95EE;&#x9898;"></a>&#x4E00;&#x4E9B;&#x95EE;&#x9898;</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">wms1993</span>
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Thème &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.3</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.3"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.3"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
